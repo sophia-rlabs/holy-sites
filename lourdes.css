@@ -1,0 +1,1524 @@
+/* ═══════════════════════════════════════════════════════════════
+   露德 Lourdes 朝聖地專頁 — lourdes.css
+   色彩系統：聖母藍 × 燭光金 × 岩洞深邃
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── 基礎設定 ─── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* 主色調 */
+    --bg-deep:      #080f1e;
+    --bg-dark:      #0d1526;
+    --bg-mid:       #111e36;
+    --bg-alt:       #0a1420;
+
+    /* 金黃系（燭光）*/
+    --gold-bright:  #f4d35e;
+    --gold-warm:    #dfb15b;
+    --gold-soft:    #c4924a;
+    --gold-dim:     #8a6535;
+    --gold-glow:    rgba(223, 177, 91, 0.18);
+
+    /* 聖母藍系 */
+    --blue-bright:  #60c7f5;
+    --blue-mid:     #3a9fcf;
+    --blue-deep:    #1d6aa8;
+    --blue-glow:    rgba(72, 180, 230, 0.15);
+
+    /* 文字 */
+    --text-primary: #f0ebe0;
+    --text-secondary: #c8bfa8;
+    --text-muted:   #8a8070;
+
+    /* 玻璃態 */
+    --glass-bg:     rgba(13, 21, 38, 0.75);
+    --glass-border: rgba(223, 177, 91, 0.2);
+    --glass-border-blue: rgba(72, 180, 230, 0.2);
+
+    /* 間距與圓角 */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 40px;
+
+    /* 字型 */
+    --font-title: 'Cinzel', 'Playfair Display', serif;
+    --font-sub:   'Playfair Display', 'Noto Serif TC', serif;
+    --font-body:  'Inter', 'Noto Sans TC', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.75;
+    overflow-x: hidden;
+}
+
+/* ─── 粒子畫布 ─── */
+#particle-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+/* ─── 通用容器 ─── */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   音效面板
+   ═══════════════════════════════════════════════════════════════ */
+.audio-panel {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 100;
+}
+
+.bell-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    color: var(--gold-warm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.bell-btn .icon { width: 22px; height: 22px; fill: currentColor; }
+.bell-btn:hover { border-color: var(--gold-warm); box-shadow: 0 0 14px rgba(223,177,91,0.4); transform: scale(1.08); }
+.bell-btn.ringing { animation: ringShake 0.6s ease; }
+
+@keyframes ringShake {
+    0%,100%{ transform: rotate(0deg) scale(1); }
+    20%    { transform: rotate(-12deg) scale(1.1); }
+    40%    { transform: rotate(12deg) scale(1.1); }
+    60%    { transform: rotate(-8deg); }
+    80%    { transform: rotate(8deg); }
+}
+
+.ambient-btn {
+    position: relative;
+    padding: 0.55rem 1.2rem;
+    border-radius: 50px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+.ambient-btn:hover { border-color: var(--gold-warm); }
+.ambient-btn.playing { border-color: var(--gold-warm); background: rgba(223,177,91,0.12); }
+.ambient-btn.playing .btn-text { color: var(--gold-bright); }
+
+.pulse-ring {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold-warm);
+    display: inline-block;
+    flex-shrink: 0;
+}
+.ambient-btn.playing .pulse-ring {
+    animation: pulseRing 1.4s ease-in-out infinite;
+}
+@keyframes pulseRing {
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%    { opacity:0.4; transform:scale(0.6); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   導航列
+   ═══════════════════════════════════════════════════════════════ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(8, 15, 30, 0.55);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(223,177,91,0.08);
+    transition: background 0.4s, border-color 0.4s;
+}
+.navbar.scrolled {
+    background: rgba(8, 15, 30, 0.92);
+    border-color: rgba(223,177,91,0.18);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.back-link {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.25s;
+    white-space: nowrap;
+}
+.back-link:hover { color: var(--gold-warm); }
+
+.logo-center {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.logo-en {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    color: var(--gold-warm);
+}
+.logo-zh {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+.nav-links a {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.25s;
+    position: relative;
+    padding-bottom: 2px;
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 100%;
+    height: 1px;
+    background: var(--gold-warm);
+    transition: right 0.3s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--gold-bright); }
+.nav-links a:hover::after,
+.nav-links a.active::after { right: 0; }
+
+/* ═══════════════════════════════════════════════════════════════
+   Hero Section
+   ═══════════════════════════════════════════════════════════════ */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+.hero-bg-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.7) brightness(0.5);
+}
+.hero-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(8,15,30,0.35) 0%,
+        rgba(8,15,30,0.2) 40%,
+        rgba(8,15,30,0.55) 75%,
+        rgba(8,15,30,0.95) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 8rem 2rem 4rem;
+    max-width: 780px;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.35rem 1.2rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--gold-warm);
+    margin-bottom: 1.8rem;
+    background: rgba(223,177,91,0.08);
+    font-family: var(--font-title);
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-family: var(--font-title);
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 0 60px rgba(223,177,91,0.35), 0 4px 30px rgba(0,0,0,0.8);
+}
+.hero-title-en {
+    display: block;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    letter-spacing: 0.5em;
+    color: var(--gold-warm);
+    margin-top: 0.4rem;
+    font-weight: 400;
+}
+
+.hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.4rem auto;
+    color: var(--gold-warm);
+    font-size: 0.9rem;
+}
+.divider-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-warm), transparent);
+}
+
+.hero-subtitle {
+    font-family: var(--font-sub);
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.hero-tagline {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    padding: 1rem 1.5rem;
+    border-left: 2px solid var(--gold-dim);
+    text-align: left;
+    background: rgba(223,177,91,0.04);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.hero-scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    animation: bounce 2.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%,100%{ transform:translateY(0); }
+    50%    { transform:translateY(6px); }
+}
+
+.hero-location-tag {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   引言 Section
+   ═══════════════════════════════════════════════════════════════ */
+.intro-section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to bottom, var(--bg-deep), var(--bg-dark));
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 4rem;
+    align-items: center;
+}
+
+.section-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-warm);
+    padding: 0.3rem 1rem;
+    border: 1px solid var(--gold-dim);
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    font-family: var(--font-title);
+}
+
+.section-heading {
+    font-family: var(--font-sub);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--text-primary);
+    margin-bottom: 1.4rem;
+    font-style: italic;
+}
+
+.intro-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.intro-quote {
+    border-left: 3px solid var(--gold-warm);
+    padding: 1rem 1.4rem;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.95rem;
+    background: rgba(223,177,91,0.05);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.intro-quote strong { color: var(--gold-warm); }
+
+.intro-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.stat-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.4rem 1rem;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.stat-card:hover {
+    border-color: var(--gold-warm);
+    transform: translateY(-3px);
+}
+.stat-num {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--gold-bright);
+    margin-bottom: 0.4rem;
+}
+.stat-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Chapter Sections（通用章節）
+   ═══════════════════════════════════════════════════════════════ */
+.chapter-section {
+    padding: 6rem 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.alt-chapter {
+    background: linear-gradient(to bottom, var(--bg-alt), var(--bg-dark));
+}
+
+/* 背景大數字 */
+.chapter-number-bg {
+    position: absolute;
+    top: 2rem;
+    right: -1rem;
+    font-family: var(--font-title);
+    font-size: clamp(8rem, 18vw, 16rem);
+    font-weight: 700;
+    color: rgba(223,177,91,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.05em;
+}
+
+.chapter-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.chapter-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    font-family: var(--font-title);
+    margin-bottom: 0.8rem;
+}
+
+.chapter-title {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--text-primary);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-subtitle {
+    font-family: var(--font-sub);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.chapter-rule {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold-warm), transparent);
+    margin: 0 auto;
+}
+
+/* ─── 故事排版（圖 + 文） ─── */
+.story-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 3rem;
+}
+
+.reverse-layout {
+    direction: rtl;
+}
+.reverse-layout > * {
+    direction: ltr;
+}
+
+.story-img-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        0 0 40px rgba(0,0,0,0.5),
+        0 0 80px var(--gold-glow);
+}
+
+.story-img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: saturate(0.85) brightness(0.9);
+    transition: filter 0.5s, transform 0.5s;
+}
+.story-img-frame:hover .story-img {
+    filter: saturate(1) brightness(1);
+    transform: scale(1.02);
+}
+
+.img-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    padding: 2.5rem 1.2rem 1rem;
+    background: linear-gradient(to top, rgba(8,15,30,0.92), transparent);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.caption-cross { color: var(--gold-dim); }
+
+.story-lead {
+    font-family: var(--font-sub);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+}
+.story-text-col p { color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.95rem; }
+.story-text-col strong { color: var(--gold-warm); }
+
+.sub-heading {
+    font-family: var(--font-sub);
+    font-size: 1rem;
+    color: var(--gold-warm);
+    margin: 1.5rem 0 0.8rem;
+    font-style: italic;
+}
+
+/* ─── 靈修洞見盒子 ─── */
+.insight-box {
+    display: flex;
+    gap: 1rem;
+    background: rgba(72,180,230,0.06);
+    border: 1px solid var(--glass-border-blue);
+    border-radius: var(--radius-md);
+    padding: 1.2rem 1.4rem;
+    margin-top: 1.5rem;
+}
+.insight-icon {
+    font-size: 1.4rem;
+    color: var(--blue-bright);
+    flex-shrink: 0;
+    line-height: 1.5;
+}
+.insight-box h4 {
+    font-family: var(--font-sub);
+    font-size: 0.88rem;
+    color: var(--blue-bright);
+    margin-bottom: 0.4rem;
+}
+.insight-box p { font-size: 0.88rem; color: var(--text-secondary); font-style: italic; margin: 0; }
+
+/* ─── 對照表格 ─── */
+.comparison-table {
+    margin-top: 1.5rem;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+.comp-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    border-bottom: 1px solid rgba(223,177,91,0.08);
+}
+.comp-row:last-child { border-bottom: none; }
+.comp-row span {
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+.comp-row span:first-child {
+    border-right: 1px solid rgba(223,177,91,0.08);
+    color: var(--gold-warm);
+}
+.header-row { background: rgba(223,177,91,0.08); }
+.header-row span { font-weight: 600; color: var(--gold-bright) !important; font-size: 0.78rem; letter-spacing: 0.1em; }
+
+/* ─── 祈禱 Banner ─── */
+.prayer-banner {
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    position: relative;
+    border: 1px solid var(--glass-border);
+    background: linear-gradient(135deg,
+        rgba(223,177,91,0.07) 0%,
+        rgba(13,21,38,0.8) 50%,
+        rgba(72,180,230,0.05) 100%
+    );
+}
+.prayer-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 50% 0%, rgba(223,177,91,0.1), transparent 70%);
+}
+.prayer-banner p {
+    position: relative;
+    font-family: var(--font-sub);
+    font-style: italic;
+    font-size: clamp(0.88rem, 1.8vw, 1.05rem);
+    color: var(--text-secondary);
+    line-height: 2;
+}
+.prayerbanner-cross {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--gold-warm);
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   章節二：岩洞 — 18次顯現時間軸
+   ═══════════════════════════════════════════════════════════════ */
+.meaning-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+.meaning-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.8rem;
+    background: rgba(13,21,38,0.6);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(223,177,91,0.08);
+    transition: border-color 0.3s;
+}
+.meaning-item:hover { border-color: var(--gold-dim); }
+.meaning-icon { font-size: 1.2rem; flex-shrink: 0; line-height: 1.6; }
+.meaning-item strong { color: var(--gold-warm); font-size: 0.88rem; display: block; margin-bottom: 0.2rem; }
+.meaning-item p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+
+.apparitions-section {
+    margin-top: 4rem;
+}
+.apparitions-title {
+    font-family: var(--font-sub);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--gold-warm);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.timeline-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.timeline-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold-dim);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.timeline-item:hover::before { opacity: 1; }
+
+.highlight-item {
+    border-color: var(--gold-dim) !important;
+    background: rgba(223,177,91,0.07);
+}
+.highlight-item::before { opacity: 1 !important; background: linear-gradient(to right, transparent, var(--gold-warm), transparent) !important; }
+
+.timeline-date {
+    font-family: var(--font-title);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--gold-warm);
+    margin-bottom: 0.6rem;
+}
+.timeline-content strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+}
+.timeline-content p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   章節三：泉水
+   ═══════════════════════════════════════════════════════════════ */
+.spring-layout { display: flex; flex-direction: column; gap: 2rem; }
+.spring-main-text p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; }
+.spring-main-text strong { color: var(--gold-warm); }
+
+.water-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+}
+.water-card {
+    background: linear-gradient(135deg, rgba(72,180,230,0.05), rgba(13,21,38,0.8));
+    border: 1px solid var(--glass-border-blue);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.water-card:hover { transform: translateY(-4px); border-color: var(--blue-mid); }
+.water-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+.water-card h4 { font-family: var(--font-sub); font-size: 0.95rem; color: var(--blue-bright); margin-bottom: 0.6rem; }
+.water-card p { font-size: 0.82rem; color: var(--text-muted); }
+
+.washing-intentions {
+    margin-top: 1rem;
+    padding: 2.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+.washing-intentions h3 {
+    font-family: var(--font-sub);
+    font-size: 1.2rem;
+    color: var(--gold-warm);
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+.intentions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.intention-item {
+    border-left: 2px solid var(--gold-dim);
+    padding: 0.8rem 1.2rem;
+    background: rgba(223,177,91,0.04);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    transition: border-color 0.3s;
+}
+.intention-item:hover { border-color: var(--gold-warm); }
+.intention-num {
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.3rem;
+}
+.intention-item h4 {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+.intention-prayer {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   章節四：苦路
+   ═══════════════════════════════════════════════════════════════ */
+.stations-intro { margin-bottom: 2.5rem; }
+.stations-intro p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; }
+.stations-intro strong { color: var(--gold-warm); }
+
+.stations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+}
+.station-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.station-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold-dim);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+.station-num {
+    background: linear-gradient(135deg, rgba(223,177,91,0.12), rgba(13,21,38,0.5));
+    padding: 0.8rem 1.2rem;
+    font-family: var(--font-title);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--gold-warm);
+    border-bottom: 1px solid rgba(223,177,91,0.1);
+}
+.station-content { padding: 1.2rem; }
+.station-content h4 {
+    font-family: var(--font-sub);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+}
+.station-content p { font-size: 0.82rem; color: var(--text-muted); }
+
+.highlight-station {
+    border-color: var(--gold-dim) !important;
+    background: rgba(223,177,91,0.06) !important;
+}
+.highlight-station .station-num { background: rgba(223,177,91,0.18) !important; }
+.highlight-station .station-content strong { color: var(--gold-bright); }
+
+/* ═══════════════════════════════════════════════════════════════
+   章節五：燭光遊行
+   ═══════════════════════════════════════════════════════════════ */
+.procession-section { padding: 0; }
+
+.procession-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+.procession-bg-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    filter: saturate(0.6) brightness(0.35);
+}
+.procession-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(8,15,30,0.8) 0%,
+        rgba(8,15,30,0.55) 40%,
+        rgba(8,15,30,0.75) 80%,
+        rgba(8,15,30,0.97) 100%
+    );
+}
+
+.procession-section .container { padding-top: 6rem; padding-bottom: 6rem; }
+
+.light-header .chapter-tag { color: var(--gold-warm); opacity: 0.7; }
+.light-header .chapter-title { color: #fff; text-shadow: 0 0 40px rgba(223,177,91,0.4); }
+.light-header .chapter-subtitle { color: var(--text-secondary); }
+.light-header .chapter-rule { background: linear-gradient(to right, transparent, var(--gold-bright), transparent); }
+
+.procession-content { position: relative; z-index: 1; }
+
+.story-lead-light { color: var(--text-secondary); }
+
+.candle-meanings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.candle-meaning-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: rgba(13,21,38,0.7);
+    border: 1px solid rgba(223,177,91,0.1);
+    border-radius: var(--radius-md);
+    padding: 1.4rem;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s, transform 0.3s;
+}
+.candle-meaning-item:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+.candle-icon-large { font-size: 2rem; flex-shrink: 0; line-height: 1.4; }
+.candle-meaning-item h4 { font-family: var(--font-sub); font-size: 0.95rem; color: var(--gold-warm); margin-bottom: 0.5rem; }
+.candle-meaning-item p { font-size: 0.83rem; color: var(--text-muted); }
+
+.procession-quote-block {
+    margin-top: 2.5rem;
+    text-align: center;
+    padding: 2.5rem;
+    border: 1px solid rgba(223,177,91,0.15);
+    border-radius: var(--radius-lg);
+    background: rgba(223,177,91,0.04);
+    backdrop-filter: blur(8px);
+}
+.big-quote {
+    font-family: var(--font-sub);
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--text-primary);
+    line-height: 1.9;
+    margin-bottom: 0.8rem;
+}
+.small-citation { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.1em; }
+
+/* ═══════════════════════════════════════════════════════════════
+   朝聖意向整理區
+   ═══════════════════════════════════════════════════════════════ */
+.intention-section {
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, var(--bg-dark), var(--bg-mid));
+    position: relative;
+    z-index: 1;
+}
+
+.intention-prompts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-top: 0;
+}
+.prompt-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.prompt-card:hover { transform: translateY(-4px); border-color: var(--gold-dim); }
+.prompt-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+.prompt-card h4 { font-family: var(--font-sub); font-size: 0.9rem; color: var(--gold-warm); margin-bottom: 0.5rem; font-style: italic; }
+.prompt-example { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════════════════════
+   虛擬祈禱岩洞
+   ═══════════════════════════════════════════════════════════════ */
+.shrine-section {
+    padding: 6rem 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.shrine-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(223,177,91,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 100%, rgba(72,180,230,0.05) 0%, transparent 60%);
+}
+
+.shrine-inner {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(16px);
+}
+
+.shrine-instruction-text {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.shrine-instruction-text p { color: var(--text-secondary); font-style: italic; font-size: 0.92rem; margin-bottom: 0.5rem; }
+
+.shrine-input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+.shrine-input-area textarea {
+    width: 100%;
+    max-width: 580px;
+    min-height: 100px;
+    background: rgba(8,15,30,0.8);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    padding: 1rem 1.2rem;
+    resize: vertical;
+    transition: border-color 0.3s;
+    line-height: 1.7;
+}
+.shrine-input-area textarea:focus {
+    outline: none;
+    border-color: var(--gold-warm);
+    box-shadow: 0 0 0 3px rgba(223,177,91,0.1);
+}
+.shrine-input-area textarea::placeholder { color: var(--text-muted); }
+
+.light-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    border: 1px solid var(--gold-warm);
+    background: linear-gradient(135deg, rgba(223,177,91,0.15), rgba(13,21,38,0.9));
+    color: var(--gold-bright);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.05em;
+}
+.light-btn:hover {
+    background: linear-gradient(135deg, rgba(223,177,91,0.25), rgba(13,21,38,0.9));
+    box-shadow: 0 0 20px rgba(223,177,91,0.3);
+    transform: translateY(-2px);
+}
+
+.prayer-float-container {
+    position: relative;
+    min-height: 80px;
+    pointer-events: none;
+}
+.floating-prayer-text {
+    position: absolute;
+    background: rgba(13,21,38,0.92);
+    border: 1px solid var(--gold-dim);
+    border-radius: var(--radius-md);
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 280px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    animation: floatUp 6s ease forwards;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+}
+@keyframes floatUp {
+    0%   { opacity: 0; transform: translateX(-50%) translateY(0); }
+    15%  { opacity: 1; }
+    75%  { opacity: 1; transform: translateX(-50%) translateY(-60px); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-80px); }
+}
+
+/* 蠟燭牆 */
+.candle-wall {
+    background: linear-gradient(135deg,
+        rgba(13,12,8,0.9), rgba(22,16,10,0.95));
+    border: 1px solid rgba(223,177,91,0.15);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+.wall-arch-label {
+    font-family: var(--font-title);
+    font-size: 0.78rem;
+    letter-spacing: 0.35em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+.candles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    min-height: 120px;
+}
+.candle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.candle-wrapper:hover { transform: scale(1.15); }
+
+.candle-flame {
+    width: 10px; height: 18px;
+    background: radial-gradient(ellipse at 50% 80%, #f9d462 30%, #f4920a 70%, #e05a00 100%);
+    border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+    box-shadow: 0 0 8px 3px rgba(249,196,66,0.6), 0 0 20px 6px rgba(240,100,0,0.35);
+    animation: flameDance 1.2s ease-in-out infinite alternate;
+    position: relative;
+    bottom: -2px;
+}
+@keyframes flameDance {
+    0%  { transform: scaleX(1) scaleY(1) rotate(-2deg); opacity: 0.9; }
+    33% { transform: scaleX(0.88) scaleY(1.08) rotate(1deg); }
+    66% { transform: scaleX(1.05) scaleY(0.95) rotate(-1deg); opacity: 1; }
+    100%{ transform: scaleX(0.93) scaleY(1.05) rotate(2deg); opacity: 0.85; }
+}
+
+.candle-body {
+    width: 14px; height: 36px;
+    background: linear-gradient(to bottom, #f5e8cc, #d4c08a, #b8a060);
+    border-radius: 3px 3px 2px 2px;
+    box-shadow: inset -3px 0 6px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Footer
+   ═══════════════════════════════════════════════════════════════ */
+.site-footer {
+    background: linear-gradient(to bottom, var(--bg-dark), #030710);
+    border-top: 1px solid rgba(223,177,91,0.1);
+    padding: 4rem 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+.footer-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+.footer-cross {
+    font-size: 2.5rem;
+    color: var(--gold-dim);
+    margin-bottom: 1rem;
+}
+.footer-prayer-title {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-warm);
+    margin-bottom: 1.5rem;
+}
+.footer-prayer-text {
+    font-family: var(--font-sub);
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 2.2;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+.footer-amen {
+    display: block;
+    margin-top: 1rem;
+    font-family: var(--font-title);
+    color: var(--gold-warm);
+    letter-spacing: 0.3em;
+    font-size: 0.9rem;
+}
+.footer-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+    margin: 2rem auto;
+}
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+.footer-links a { color: var(--gold-dim); text-decoration: none; transition: color 0.25s; }
+.footer-links a:hover { color: var(--gold-warm); }
+.footer-copy { font-size: 0.72rem; color: var(--text-muted); opacity: 0.6; letter-spacing: 0.08em; }
+
+/* ═══════════════════════════════════════════════════════════════
+   滾動動畫
+   ═══════════════════════════════════════════════════════════════ */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+    .intro-grid { grid-template-columns: 1fr; }
+    .story-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .reverse-layout { direction: ltr; }
+    .candle-meanings { grid-template-columns: 1fr; }
+    .intentions-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .navbar { padding: 1rem 1.5rem; }
+    .hero-location-tag { display: none; }
+    .map-layout { grid-template-columns: 1fr; }
+    .memorial-prayers { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .container { padding: 0 1.2rem; }
+    .washing-intentions { padding: 1.5rem 1.2rem; }
+    .shrine-inner { padding: 1.5rem 1.2rem; border-radius: var(--radius-lg); }
+    .audio-panel { bottom: 1rem; right: 1rem; }
+    .chapter-section { padding: 4rem 0; }
+    .hero-title { font-size: 3rem; }
+    .timeline { grid-template-columns: 1fr; }
+    .intro-stats { grid-template-columns: 1fr 1fr; }
+    .stations-grid { grid-template-columns: 1fr; }
+    .memorial-inner { padding: 2rem 1.2rem; }
+    .map-section { padding: 4rem 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   朝聖地圖區塊
+   ═══════════════════════════════════════════════════════════════ */
+.map-section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to bottom, var(--bg-mid), var(--bg-dark));
+}
+
+.map-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 0;
+}
+
+.map-img-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        0 0 0 1px rgba(223,177,91,0.06),
+        0 20px 60px rgba(0,0,0,0.6),
+        0 0 80px var(--gold-glow);
+}
+.pilgrimage-map {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s ease;
+}
+.map-img-wrap:hover .pilgrimage-map { transform: scale(1.02); }
+
+.map-overlay-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.2rem 1rem;
+    background: linear-gradient(to top, rgba(8,15,30,0.9), transparent);
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+    text-align: center;
+}
+
+.map-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.map-point {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.9rem 1rem;
+    background: var(--glass-bg);
+    border: 1px solid rgba(223,177,91,0.08);
+    border-radius: var(--radius-md);
+    transition: border-color 0.3s;
+}
+.map-point:hover { border-color: var(--gold-dim); }
+.map-point strong { display: block; font-size: 0.88rem; color: var(--text-primary); margin-bottom: 0.25rem; }
+.map-point p { font-size: 0.8rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+.map-point-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+    box-shadow: 0 0 8px currentColor;
+}
+.grotto-dot     { background: #60c7f5; color: #60c7f5; }
+.spring-dot     { background: #4ecdc4; color: #4ecdc4; }
+.basilica-dot   { background: #dfb15b; color: #dfb15b; }
+.stations-dot   { background: #c94a4a; color: #c94a4a; }
+.procession-dot { background: #f4d35e; color: #f4d35e; }
+
+.map-timetable {
+    margin-top: 0.5rem;
+    background: rgba(223,177,91,0.06);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+}
+.timetable-title {
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-warm);
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+.timetable-row {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(223,177,91,0.06);
+    font-size: 0.82rem;
+}
+.timetable-row:last-child { border-bottom: none; }
+.t-time {
+    font-family: var(--font-title);
+    color: var(--gold-warm);
+    font-size: 0.78rem;
+    min-width: 50px;
+    flex-shrink: 0;
+}
+.t-act { color: var(--text-muted); }
+
+/* ═══════════════════════════════════════════════════════════════
+   媽媽與遺憾靈修交託區
+   ═══════════════════════════════════════════════════════════════ */
+.memorial-section {
+    position: relative;
+    padding: 6rem 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.memorial-veil {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 30% 50%, rgba(72,100,200,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 50%, rgba(223,177,91,0.07) 0%, transparent 55%),
+        linear-gradient(to bottom, var(--bg-dark), var(--bg-mid), var(--bg-dark));
+}
+
+.memorial-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem 2.5rem;
+    background: var(--glass-bg);
+    border: 1px solid rgba(223,177,91,0.18);
+    border-radius: var(--radius-xl);
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 0 0 1px rgba(223,177,91,0.05),
+        0 30px 80px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.memorial-cross {
+    font-size: 2.5rem;
+    color: var(--gold-warm);
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 20px rgba(223,177,91,0.5);
+    animation: crossGlow 3s ease-in-out infinite alternate;
+}
+@keyframes crossGlow {
+    0%  { text-shadow: 0 0 15px rgba(223,177,91,0.4); }
+    100%{ text-shadow: 0 0 35px rgba(223,177,91,0.8), 0 0 60px rgba(223,177,91,0.3); }
+}
+
+.memorial-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    font-family: var(--font-title);
+    margin-bottom: 1.5rem;
+    padding: 0.3rem 1.2rem;
+    border: 1px solid rgba(223,177,91,0.2);
+    border-radius: 50px;
+    background: rgba(223,177,91,0.06);
+}
+
+.memorial-title {
+    font-family: var(--font-sub);
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+}
+.memorial-sub {
+    display: block;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--text-secondary);
+}
+
+.memorial-text {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+.memorial-text p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+    margin-bottom: 0.9rem;
+}
+.memorial-text strong { color: var(--gold-warm); }
+
+.memorial-prayers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: left;
+}
+
+.memorial-prayer-card {
+    background: rgba(8,15,30,0.6);
+    border: 1px solid rgba(223,177,91,0.1);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    transition: border-color 0.3s, transform 0.3s;
+}
+.memorial-prayer-card:hover {
+    border-color: var(--gold-dim);
+    transform: translateY(-3px);
+}
+.mp-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.7rem;
+}
+.memorial-prayer-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.75;
+    margin: 0;
+}

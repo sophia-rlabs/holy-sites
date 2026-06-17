@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>露德 Lourdes — 在脆弱中被聖母擁抱 | 2026 朝聖之旅</title>
+    <meta name="description" content="露德，Massabielle 岩洞，聖女伯爾納德，醫治泉水，苦路默想，燭光遊行。帶著脆弱走向聖母，在黑暗中跟著光走。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="lourdes.css">
+</head>
+<body>
+
+    <!-- 全頁背景粒子畫布 -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- 音效面板 -->
+    <div class="audio-panel" id="audio-panel">
+        <button class="bell-btn" id="bell-btn" title="敲響心靈之鐘">
+            <svg viewBox="0 0 24 24" class="icon">
+                <path d="M12 2C10.34 2 9 3.34 9 5v1.09C6.16 6.82 4 9.47 4 12.5v4.5L2 19v1h20v-1l-2-2v-4.5c0-3.03-2.16-5.68-5-6.41V5c0-1.66-1.34-3-3-3zm0 20c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/>
+            </svg>
+        </button>
+        <button class="ambient-btn" id="ambient-btn">
+            <span class="pulse-ring"></span>
+            <span class="btn-text">靜心聆聽</span>
+        </button>
+    </div>
+
+    <!-- 導航列 -->
+    <header class="navbar" id="navbar">
+        <div class="nav-logo">
+            <a href="index.html" class="back-link" title="返回主頁">← 朝聖地圖</a>
+            <div class="logo-center">
+                <span class="logo-en">Lourdes</span>
+                <span class="logo-zh">露德朝聖地</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#hero">聖所</a>
+            <a href="#bernadette">伯爾納德</a>
+            <a href="#grotto">岩洞顯現</a>
+            <a href="#spring">醫治泉水</a>
+            <a href="#stations">苦路默想</a>
+            <a href="#procession">燭光遊行</a>
+            <a href="#shrine">祈願點燈</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ─── Hero Section ─── -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg">
+                <img src="assets/lourdes_grotto.png" alt="露德 Massabielle 岩洞" class="hero-bg-img">
+                <div class="hero-veil"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">2026 · Lourdes · France</div>
+                <h1 class="hero-title">
+                    露 德
+                    <span class="hero-title-en">Lourdes</span>
+                </h1>
+                <div class="hero-divider">
+                    <span>✦</span>
+                    <span class="divider-line"></span>
+                    <span>†</span>
+                    <span class="divider-line"></span>
+                    <span>✦</span>
+                </div>
+                <p class="hero-subtitle">在脆弱中被聖母擁抱</p>
+                <p class="hero-tagline">
+                    「我不是因為完全沒有恐懼才來這裡。<br>
+                    我是帶著害怕，仍然願意走向天主的面前。」
+                </p>
+                <div class="hero-scroll-hint">
+                    <span>↓</span>
+                    <span>向下探索朝聖之路</span>
+                </div>
+            </div>
+            <div class="hero-location-tag">
+                <span>📍</span>
+                <span>法國南部 · Gave 河畔 · 庇里牛斯山腳</span>
+            </div>
+        </section>
+
+        <!-- ─── 引言板塊 ─── -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <div class="section-badge">關於露德</div>
+                        <h2 class="section-heading">朝聖，不是旅行打卡</h2>
+                        <p>
+                            露德，這個法國南部庇里牛斯山腳下的小城，自 1858 年起成為全球天主教最重要的朝聖地之一。每年有超過六百萬朝聖者從世界各地來到這裡。他們帶來的不是行李箱裡的紀念品，而是各自的脆弱、疾病、失去、渴望與未被說出口的眼淚。
+                        </p>
+                        <p>
+                            露德不是展示完美信仰的舞台。這裡是人帶著真實生命，走到天主面前的地方。岩洞不等於負面情緒，而是天主願意進入並顯現的內在深處——那些尚未被光照、尚未被安慰的隱藏之地。
+                        </p>
+                        <blockquote class="intro-quote">
+                            「天主不是等你完美了才來。<br>
+                            不是等你完全有信心、完全不焦慮、完全準備好，才與你相遇。<br>
+                            露德的訊息是：<strong>你害怕，也可以來。</strong>」
+                        </blockquote>
+                    </div>
+                    <div class="intro-stats">
+                        <div class="stat-card">
+                            <div class="stat-num">1858</div>
+                            <div class="stat-label">聖母顯現年份</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">18</div>
+                            <div class="stat-label">次顯現</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">600萬+</div>
+                            <div class="stat-label">年朝聖人次</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">170+</div>
+                            <div class="stat-label">年朝聖歷史</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 聖女伯爾納德 ─── -->
+        <section id="bernadette" class="chapter-section">
+            <div class="chapter-number-bg">01</div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">第一章 · Chapter I</div>
+                    <h2 class="chapter-title">聖女伯爾納德</h2>
+                    <p class="chapter-subtitle">天主為什麼選擇弱小的人？</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="story-layout">
+                    <div class="story-image-col">
+                        <div class="story-img-frame">
+                            <img src="assets/saint_bernadette.png" alt="聖女伯爾納黛 Bernadette Soubirous" class="story-img">
+                            <div class="img-caption">
+                                <span class="caption-cross">✦</span>
+                                聖伯爾納黛 · Bernadette Soubirous · 1844–1879
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-text-col">
+                        <p class="story-lead">
+                            1844年，伯爾納黛生於法國露德的貧窮家庭。她身體虛弱，有氣喘，讀書不多，甚至一度和家人住進舊監牢改建的破敗小房間 Le Cachot。
+                        </p>
+                        <p>
+                            天主沒有挑選主教、神學家或社會上有影響力的人，而是挑選了這個被人輕看的小女孩。她的力量不在於學識或口才，而在於一樣最簡單、最難得的特質：<strong>忠實地說出自己所看見的，不誇大、不迎合、不改口。</strong>
+                        </p>
+                        <p>
+                            1858年2月11日，14歲的伯爾納黛去 Massabielle 岩洞附近撿柴，聽到風聲，抬頭見到岩洞上方有位美麗的女子。她沒有立刻說「我看見聖母」，只稱她為「那位小姐」，之後她接連在這裡見到聖母共 18 次，直到 1858 年 7 月 16 日最後一次顯現。
+                        </p>
+
+                        <div class="insight-box">
+                            <div class="insight-icon">✝</div>
+                            <div>
+                                <h4>給你的靈修問題</h4>
+                                <p>我是否相信：即使我有恐懼、焦慮、不確定，天主仍然可以在我身上工作？就像祂在脆弱的伯爾納黛身上工作一樣。</p>
+                            </div>
+                        </div>
+
+                        <div class="comparison-table">
+                            <div class="comp-row header-row">
+                                <span>伯爾納黛的處境</span>
+                                <span>靈修意義</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>貧窮</span>
+                                <span>天主不以社會地位揀選</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>身體虛弱</span>
+                                <span>脆弱不等於無用</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>被質疑</span>
+                                <span>真實的召叫常需承受孤單</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>年紀小</span>
+                                <span>天主常透過單純的心說話</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>不善辯</span>
+                                <span>信德靠忠誠，不靠口才</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-banner bernadette-prayer">
+                    <span class="prayerbanner-cross">†</span>
+                    <p>「天主，請讓我不要因為自己的脆弱而否定自己。<br>
+                    如果祢能選擇伯爾納黛，祢也能在我的不安中陪我前行。」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 岩洞顯現 ─── -->
+        <section id="grotto" class="chapter-section alt-chapter">
+            <div class="chapter-number-bg">02</div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">第二章 · Chapter II</div>
+                    <h2 class="chapter-title">Massabielle 岩洞</h2>
+                    <p class="chapter-subtitle">邊緣之地的恩寵</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="story-layout reverse-layout">
+                    <div class="story-image-col">
+                        <div class="story-img-frame">
+                            <img src="assets/lourdes_grotto.png" alt="露德 Massabielle 聖母岩洞" class="story-img">
+                            <div class="img-caption">
+                                <span class="caption-cross">✦</span>
+                                Massabielle 岩洞 · 露德聖母顯現之地
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-text-col">
+                        <p class="story-lead">
+                            露德的顯現沒有發生在金碧輝煌的聖殿，而是發生在 Gave 河邊的 Massabielle 岩洞——一個貧窮孩子撿柴、謀生掙扎的邊緣之地。
+                        </p>
+
+                        <p>
+                            這個地點蘊含深刻的神學意義：<strong>天主不只在莊嚴、乾淨、體面的地方臨在。祂也在人的貧窮、日常掙扎、被人忽略的地方臨在。</strong>
+                        </p>
+
+                        <h4 class="sub-heading">岩洞的五層意義</h4>
+                        <div class="meaning-list">
+                            <div class="meaning-item">
+                                <div class="meaning-icon">🕯️</div>
+                                <div>
+                                    <strong>隱藏之地</strong>
+                                    <p>岩洞是那些平常不敢說出口的地方：害怕、焦慮、脆弱、對失控的恐懼。天主邀請說：「這裡也是我，我願意讓祢進來。」</p>
+                                </div>
+                            </div>
+                            <div class="meaning-item">
+                                <div class="meaning-icon">💧</div>
+                                <div>
+                                    <strong>貧窮之地</strong>
+                                    <p>不只是金錢的貧窮，也是心理的貧窮：我沒有那麼勇敢、那麼穩定、那麼相信自己。但天主不是等你「富足」了才來。</p>
+                                </div>
+                            </div>
+                            <div class="meaning-item">
+                                <div class="meaning-icon">✨</div>
+                                <div>
+                                    <strong>被忽視之地</strong>
+                                    <p>天主偏偏從被忽略的地方開始。你那些你視為「麻煩」的脆弱之處，也許正是天主即將工作的地方。</p>
+                                </div>
+                            </div>
+                            <div class="meaning-item">
+                                <div class="meaning-icon">🌊</div>
+                                <div>
+                                    <strong>進入內在之地</strong>
+                                    <p>大教堂讓人往上看，岩洞讓人往裡走。露德的岩洞是你內在旅程的入口：從恐懼 → 準備 → 信靠 → 行動 → 自由 → 感謝。</p>
+                                </div>
+                            </div>
+                            <div class="meaning-item">
+                                <div class="meaning-icon">🌸</div>
+                                <div>
+                                    <strong>恩寵湧出之地</strong>
+                                    <p>岩洞裡有水。天主不是只讓你看見黑暗，而是在黑暗處開出泉水。你最貧乏的地方，也可能是恩寵開始流出的地方。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <div class="insight-icon">✝</div>
+                            <div>
+                                <h4>今日默想</h4>
+                                <p>「我心中的岩洞是什麼？是恐懼？孤單？不信任自己？還是害怕失控？這些情緒背後有什麼渴望？天主想在這些地方開出什麼泉水？」</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 18次顯現時間軸 -->
+                <div class="apparitions-section">
+                    <h3 class="apparitions-title">18 次聖母顯現 · 1858 年 2 月 11 日 — 7 月 16 日</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">2月11日</div>
+                            <div class="timeline-content">
+                                <strong>第一次顯現</strong>
+                                <p>伯爾納黛在岩洞見到美麗女子。召叫安靜而神秘地開始。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2月14日</div>
+                            <div class="timeline-content">
+                                <strong>伯爾納黛帶聖水分辨</strong>
+                                <p>她灑聖水，那位女子只是微笑。信仰需要分辨，不是盲目接受。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2月18日</div>
+                            <div class="timeline-content">
+                                <strong>聖母邀請她連續15天前來</strong>
+                                <p>聖母說：「我不承諾讓你在今世幸福，而是在另一個世界。」</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2月24日</div>
+                            <div class="timeline-content">
+                                <strong>悔改與為罪人祈禱</strong>
+                                <p>「悔改，悔改，悔改！為罪人向天主祈禱。」露德核心不是神蹟，而是悔改。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight-item">
+                            <div class="timeline-date">2月25日</div>
+                            <div class="timeline-content">
+                                <strong>泉水從岩洞湧出</strong>
+                                <p>聖母指示她去挖掘，起初是混濁的泥水，後來泉水慢慢湧出。恩寵從陰暗處流出。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">3月2日</div>
+                            <div class="timeline-content">
+                                <strong>請在這裡建一座小堂</strong>
+                                <p>「讓人們列隊前來祈禱，並在這裡建一座小堂。」今日的燭光遊行由此而來。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight-item">
+                            <div class="timeline-date">3月25日</div>
+                            <div class="timeline-content">
+                                <strong>聖母說出自己的名字</strong>
+                                <p>「我是無原罪始胎（I am the Immaculate Conception）。」此為整個露德顯現的核心宣告。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">7月16日</div>
+                            <div class="timeline-content">
+                                <strong>最後一次顯現</strong>
+                                <p>岩洞已被封鎖，伯爾納黛從河的另一邊仍看見聖母。距離不能阻斷恩寵。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-banner grotto-prayer">
+                    <span class="prayerbanner-cross">†</span>
+                    <p>「聖母媽媽，請帶我走進我心裡不敢看的地方。<br>
+                    不要讓我逃避，也不要讓我孤單面對。<br>
+                    我的岩洞不是只有黑暗，天主也可能在這裡開出泉水。」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 醫治泉水 ─── -->
+        <section id="spring" class="chapter-section">
+            <div class="chapter-number-bg">03</div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">第三章 · Chapter III</div>
+                    <h2 class="chapter-title">醫治泉水</h2>
+                    <p class="chapter-subtitle">天主在岩洞裡開出生命</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="spring-layout">
+                    <div class="spring-main-text">
+                        <p class="story-lead">
+                            自 1858 年 2 月 25 日起，泉水從 Massabielle 岩洞的泥土中湧出。這泉水不是魔法，而是一個記號——天主能在人最貧乏、最害怕、最沒有把握的地方，開出生命。
+                        </p>
+                        <p>
+                            伯爾納黛在泥土中挖掘，起初出來的水是<strong>混濁的</strong>，讓旁人覺得她很奇怪。這一點很重要：恩寵剛開始流動時，不一定像我們想像的那樣清楚、漂亮、完整。有時候，恩寵的最初形式是：「我開始願意承認自己害怕。」
+                        </p>
+                    </div>
+
+                    <div class="water-cards">
+                        <div class="water-card">
+                            <div class="water-icon">🌊</div>
+                            <h4>泉水不是魔法</h4>
+                            <p>它是記號，提醒我們：洗禮、潔淨、悔改、更新、被天主重新觸摸。不是「喝了水就立刻不怕」，而是「讓天主慢慢觸碰我的恐懼」。</p>
+                        </div>
+                        <div class="water-card">
+                            <div class="water-icon">💧</div>
+                            <h4>從岩洞流出</h4>
+                            <p>泉水不是從宮殿或大教堂流出，而是從岩洞流出。天主的生命，常常在我們最缺乏、最貧窮、最需要祂的地方，開始工作。</p>
+                        </div>
+                        <div class="water-card">
+                            <div class="water-icon">✨</div>
+                            <h4>治癒的真實意義</h4>
+                            <p>治癒不一定是「立刻完全不怕」。真實的治癒可能是：我還會怕，但不再完全被恐懼控制。恐懼不再是唯一的帶路者。</p>
+                        </div>
+                        <div class="water-card">
+                            <div class="water-icon">🙏</div>
+                            <h4>身體性的信仰</h4>
+                            <p>你用手接觸水，用水觸摸額頭。朝聖不只用頭腦，也用身體。承認「我需要天主」，這本身就是一種信德的行動。</p>
+                        </div>
+                    </div>
+
+                    <div class="washing-intentions">
+                        <h3>泉水可以洗淨什麼？</h3>
+                        <div class="intentions-grid">
+                            <div class="intention-item">
+                                <div class="intention-num">一</div>
+                                <h4>「我必須完全準備好才可以開始」</h4>
+                                <p class="intention-prayer">天主，請洗淨我必須完全準備好才敢開始的焦慮。請幫助我做好該做的準備，也學會放下不能控制的部分。</p>
+                            </div>
+                            <div class="intention-item">
+                                <div class="intention-num">二</div>
+                                <h4>「我只能避凶，不敢趨吉」</h4>
+                                <p class="intention-prayer">天主，請洗淨我只敢求避凶的心。請慢慢教我相信，我也可以走向祝福。</p>
+                            </div>
+                            <div class="intention-item">
+                                <div class="intention-num">三</div>
+                                <h4>「我必須保護所有人」</h4>
+                                <p class="intention-prayer">天主，請洗淨我過度承擔的責任感。請讓我知道，我不是每個人的救主，我可以愛人，也可以把所愛的人交託給祢。</p>
+                            </div>
+                            <div class="intention-item">
+                                <div class="intention-num">四</div>
+                                <h4>「我不相信自己可以」</h4>
+                                <p class="intention-prayer">天主，請洗淨我對自己的不信任。請讓我用新的眼光看自己——我是正在學習自由，也已經有能力往前走的人。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-banner spring-prayer">
+                    <span class="prayerbanner-cross">†</span>
+                    <p>「天主，請在我的岩洞裡開出泉水；<br>
+                    不是讓我否認恐懼，而是讓我在恐懼中開始流出生命。<br>
+                    我不是等治好了才出發，我是一邊害怕，一邊被祢醫治。」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 苦路默想 ─── -->
+        <section id="stations" class="chapter-section alt-chapter">
+            <div class="chapter-number-bg">04</div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">第四章 · Chapter IV</div>
+                    <h2 class="chapter-title">苦路默想</h2>
+                    <p class="chapter-subtitle">耶穌陪我走過痛苦，不是讓我一個人承受</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="stations-intro">
+                    <p class="story-lead">
+                        露德的苦路（Stations of the Cross）不是普通步道，而是祈禱之路。Prairie Stations of the Cross 位於 Gave 河旁，以 17 處 Carrara 大理石作品，帶朝聖者從基督受難默想到復活。
+                    </p>
+                    <p>
+                        苦路不是「崇拜痛苦」，也不是叫你沉溺在傷口裡。苦路真正要讓你看見的是：<strong>耶穌如何走進人類最深的黑暗，使黑暗不再是天主缺席的地方。</strong>
+                    </p>
+                </div>
+
+                <div class="stations-grid">
+                    <div class="station-card">
+                        <div class="station-num">耶穌被定罪</div>
+                        <div class="station-content">
+                            <h4>照見你對自己的嚴厲</h4>
+                            <p>我是否曾太嚴厲地審判自己？一焦慮就責備，一出錯就覺得不夠好。跌倒不是失敗，跌倒後願意再起來，才是路的一部分。</p>
+                        </div>
+                    </div>
+                    <div class="station-card">
+                        <div class="station-num">耶穌背十字架</div>
+                        <div class="station-content">
+                            <h4>我現在背著什麼重擔？</h4>
+                            <p>你是否常常覺得自己要把所有事情扛起來？照顧家人、消除所有風險、把準備做到120%？苦路提醒你：有些重擔，耶穌沒有要求你一個人背。</p>
+                        </div>
+                    </div>
+                    <div class="station-card">
+                        <div class="station-num">耶穌三次跌倒</div>
+                        <div class="station-content">
+                            <h4>跌倒不是終點</h4>
+                            <p>如果連耶穌在受難路上都有跌倒的圖像，你的跌倒也不需要被看成失敗。成長不是從不跌倒，成長是跌倒後不再用責備把自己打倒第二次。</p>
+                        </div>
+                    </div>
+                    <div class="station-card">
+                        <div class="station-num">西滿幫忙背十字架</div>
+                        <div class="station-content">
+                            <h4>你可以接受幫助</h4>
+                            <p>接受幫助不是失敗。真正成熟的獨立，不是什麼都自己扛，而是知道什麼時候需要求助。耶穌願意讓西滿幫祂背十字架，你也可以。</p>
+                        </div>
+                    </div>
+                    <div class="station-card">
+                        <div class="station-num">耶穌遇見聖母</div>
+                        <div class="station-content">
+                            <h4>有些陪伴不立刻解決問題</h4>
+                            <p>聖母沒有把十字架拿走，但她在那裡。有些陪伴是：「我沒有離開你。我陪你在這裡。你不是一個人。」這也是你來露德最深的邀請。</p>
+                        </div>
+                    </div>
+                    <div class="station-card highlight-station">
+                        <div class="station-num">耶穌復活 ✦</div>
+                        <div class="station-content">
+                            <h4>痛苦不是最後一句</h4>
+                            <p>苦路由 17 處作品組成，終點不是死亡，而是復活。你的恐懼不是最後一句。你的焦慮不是最後一句。<strong>復活才是最後一句。</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-banner stations-prayer">
+                    <span class="prayerbanner-cross">†</span>
+                    <p>「耶穌，請陪我走我的苦路。<br>
+                    請讓我在跌倒後重新站起來。請讓我在不能掌控的地方學習信靠。<br>
+                    痛苦不是最後一句，復活才是。」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 燭光遊行 ─── -->
+        <section id="procession" class="chapter-section procession-section">
+            <div class="chapter-number-bg">05</div>
+            <div class="procession-bg">
+                <img src="assets/lourdes_candlelight.png" alt="露德燭光遊行" class="procession-bg-img">
+                <div class="procession-veil"></div>
+            </div>
+            <div class="container">
+                <div class="chapter-header light-header">
+                    <div class="chapter-tag">第五章 · Chapter V</div>
+                    <h2 class="chapter-title">燭光遊行</h2>
+                    <p class="chapter-subtitle">在黑暗中，仍然選擇跟著光走</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="procession-content">
+                    <div class="procession-intro">
+                        <p class="story-lead story-lead-light">
+                            每年4月至10月，每天晚上9點，露德的夜間燭光玫瑰經遊行在聖所舉行。這是一個非常古老的祈禱傳統——成千上萬的朝聖者拿著微弱的蠟燭，跟著聖母像，一起祈禱玫瑰經，慢慢行進。
+                        </p>
+                    </div>
+
+                    <div class="candle-meanings">
+                        <div class="candle-meaning-item">
+                            <div class="candle-icon-large">🌙</div>
+                            <div>
+                                <h4>為什麼是在夜晚？</h4>
+                                <p>夜晚讓人感覺不確定、安靜、更接近內在，也更容易碰觸到害怕、孤單、未知。信仰不是因為人生完全沒有黑暗才開始——信仰是在黑暗仍然存在時，我仍然選擇跟著光走。</p>
+                            </div>
+                        </div>
+                        <div class="candle-meaning-item">
+                            <div class="candle-icon-large">🕯️</div>
+                            <div>
+                                <h4>蠟燭為什麼這麼小？</h4>
+                                <p>一根蠟燭不能把整個黑夜變成白天，但它能照亮眼前的一小段路。天主給的常常是「下一步的光」，不是整條路的保證。你不需要一次看見整條路，你只需要在今天，跟著這一點光走下一步。</p>
+                            </div>
+                        </div>
+                        <div class="candle-meaning-item">
+                            <div class="candle-icon-large">👥</div>
+                            <div>
+                                <h4>為什麼是一起走？</h4>
+                                <p>你在隊伍中走，旁邊有來自不同國家的朝聖者——有病人、有照顧者、有帶著眼淚祈禱的人。這提醒你：我不是一個人走。我的祈禱在教會的祈禱中，我的勇氣也可以在眾人的光中被扶持。</p>
+                            </div>
+                        </div>
+                        <div class="candle-meaning-item">
+                            <div class="candle-icon-large">💫</div>
+                            <div>
+                                <h4>恐懼不再帶路，天主帶路</h4>
+                                <p>以前恐懼可能常常帶路：因為怕，所以只敢避凶；因為怕，所以懷疑自己。燭光遊行邀請你換一個帶路者：讓天主帶路。讓信德帶路。讓你想成為更自由的自己的渴望帶路。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="procession-quote-block">
+                        <p class="big-quote">
+                            「我不是因為沒有黑暗才相信，<br>
+                            而是在黑暗中仍然選擇跟著光走。」
+                        </p>
+                        <p class="small-citation">— 露德燭光遊行的靈性意義</p>
+                    </div>
+                </div>
+
+                <div class="prayer-banner procession-prayer">
+                    <span class="prayerbanner-cross">†</span>
+                    <p>「天主，請不要讓恐懼帶路。<br>
+                    請讓祢的光帶我走下一步。<br>
+                    請讓我在害怕中仍然看見下一步，在黑暗中仍然保護心裡的小小燭光。」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 朝聖地圖 ─── -->
+        <section class="map-section">
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">朝聖路線</div>
+                    <h2 class="chapter-title">露德聖所地圖</h2>
+                    <p class="chapter-subtitle">認識聖所的空間，讓腳步跟著心走</p>
+                    <div class="chapter-rule"></div>
+                </div>
+                <div class="map-layout">
+                    <div class="map-img-wrap">
+                        <img src="docs/地圖-2026-0707-露德朝聖GPT.png"
+                             alt="露德朝聖地圖 2026"
+                             class="pilgrimage-map">
+                        <div class="map-overlay-label">2026 · 露德朝聖路線圖</div>
+                    </div>
+                    <div class="map-desc">
+                        <div class="map-point">
+                            <div class="map-point-dot grotto-dot"></div>
+                            <div>
+                                <strong>Massabielle 岩洞</strong>
+                                <p>聖所核心，聖母顯現之地。在這裡安靜祈禱，觸摸岩石，感受天主的臨在。</p>
+                            </div>
+                        </div>
+                        <div class="map-point">
+                            <div class="map-point-dot spring-dot"></div>
+                            <div>
+                                <strong>泉水取水處 / Rotonde</strong>
+                                <p>朝聖者取水、洗手、參加 Water Gesture 的地方。帶著祈禱領受記號。</p>
+                            </div>
+                        </div>
+                        <div class="map-point">
+                            <div class="map-point-dot basilica-dot"></div>
+                            <div>
+                                <strong>無原罪聖母大殿</strong>
+                                <p>連到 3月25日聖母顯現的核心宣告。參加彌撒，進入教會的祈禱。</p>
+                            </div>
+                        </div>
+                        <div class="map-point">
+                            <div class="map-point-dot stations-dot"></div>
+                            <div>
+                                <strong>苦路步道（Prairie）</strong>
+                                <p>沿 Gave 河旁行走，17 處大理石作品，從受難默想到復活的祈禱之路。</p>
+                            </div>
+                        </div>
+                        <div class="map-point">
+                            <div class="map-point-dot procession-dot"></div>
+                            <div>
+                                <strong>燭光遊行廣場</strong>
+                                <p>每晚21:00，4月至10月。朝聖者聚集，拿著燭光跟著聖母像行進。</p>
+                            </div>
+                        </div>
+                        <div class="map-timetable">
+                            <div class="timetable-title">✦ 朝聖日建議行程 ✦</div>
+                            <div class="timetable-row"><span class="t-time">上午</span><span class="t-act">聖母岩洞 → 聖所聖殿 → 安靜祈禱</span></div>
+                            <div class="timetable-row"><span class="t-time">下午</span><span class="t-act">苦路 → Gave 河邊慢走 → 取水洗手</span></div>
+                            <div class="timetable-row"><span class="t-time">21:00</span><span class="t-act">夜間燭光玫瑰經遊行</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 媽媽與遺憾：靈修交託專區 ─── -->
+        <section class="memorial-section">
+            <div class="memorial-veil"></div>
+            <div class="container">
+                <div class="memorial-inner">
+                    <div class="memorial-cross">✝</div>
+                    <div class="memorial-badge">獻給所有帶著遺憾來朝聖的人</div>
+                    <h2 class="memorial-title">
+                        「聖母媽媽，我來了。<br>
+                        <span class="memorial-sub">我帶著媽媽沒有一起來的遺憾，也帶著我多年來的眼淚。」</span>
+                    </h2>
+                    <div class="memorial-text">
+                        <p>
+                            有時候，朝聖是帶著一個人來到這裡，那個人卻已經不在了。也許你曾經希望能和她一起來露德感謝聖母。也許那個心願一直放在心裡，卻來不及實現。
+                        </p>
+                        <p>
+                            露德不是說：遺憾不重要。露德是說：你可以把遺憾帶來，放在聖母面前。<br>
+                            <strong>你帶著她的記憶來，就是帶著她來。</strong>
+                        </p>
+                        <p>
+                            你也可以把一切你所深愛的人——媽媽、爸爸、家人、姪子、神父、朋友——都在這裡交託給聖母。你不需要永遠當他們的救主。你可以愛他們，也可以把他們交出去。
+                        </p>
+                    </div>
+                    <div class="memorial-prayers">
+                        <div class="memorial-prayer-card">
+                            <div class="mp-icon">🕯️</div>
+                            <p>「我帶著媽媽，帶著對她的思念與愛，帶著那個沒有一起來的遺憾，來到祢面前。請讓她在天國安息，沒有病痛，被祢的光包圍。」</p>
+                        </div>
+                        <div class="memorial-prayer-card">
+                            <div class="mp-icon">🌸</div>
+                            <p>「聖母媽媽，請保護我所有愛的人。請接住我放不下的心。請讓我學會：我可以深愛他們，但不需要把自己的命運和他們的命運綁在一起。」</p>
+                        </div>
+                        <div class="memorial-prayer-card">
+                            <div class="mp-icon">💙</div>
+                            <p>「天主，我不是帶著完美來朝聖。我帶著傷、帶著多年的眼淚、帶著那些還沒被整理好的地方。但我願意來。請讓露德成為我重新開始的地方。」</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 朝聖意向整理 ─── -->
+        <section class="intention-section">
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">整理你的朝聖意向</div>
+                    <h2 class="chapter-title">帶著什麼來，交出什麼去</h2>
+                    <div class="chapter-rule"></div>
+                </div>
+                <div class="intention-prompts">
+                    <div class="prompt-card">
+                        <div class="prompt-icon">🎒</div>
+                        <h4>我帶著＿＿＿來到露德</h4>
+                        <p class="prompt-example">例如：飛行恐懼、焦慮、對自己能力的不確定、想學習自由的渴望</p>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon">🩹</div>
+                        <h4>我最需要被天主醫治的是＿＿＿</h4>
+                        <p class="prompt-example">例如：不相信自己可以獨立、只敢求避凶不敢趨吉、過度保護別人的習慣</p>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon">😰</div>
+                        <h4>我最害怕的是＿＿＿</h4>
+                        <p class="prompt-example">例如：在陌生地方失控、孤單、無法處理突發狀況、讓重要的人失望</p>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon">🙏</div>
+                        <h4>我願意交託的是＿＿＿</h4>
+                        <p class="prompt-example">例如：想控制一切才安心的習慣、對家人命運的過度承擔、對未來的不確定感</p>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon">🕊️</div>
+                        <h4>我希望從露德帶走的是＿＿＿</h4>
+                        <p class="prompt-example">例如：更深的信靠、更自由的心、更穩定的勇氣、從恐懼走向自由的一小步</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 虛擬祈禱岩洞 ─── -->
+        <section id="shrine" class="shrine-section">
+            <div class="shrine-bg-overlay"></div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">心靈祈願</div>
+                    <h2 class="chapter-title">點燭光，交託心靈</h2>
+                    <p class="chapter-subtitle">Massabielle 虛擬祈願岩洞</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="shrine-inner">
+                    <div class="shrine-instruction-text">
+                        <p>「聖母媽媽，我來了。我帶著多年來的眼淚、恐懼，與對家人的牽掛……」</p>
+                        <p>請在下方寫下你最想帶到聖母面前的託付，點燃一盞虛擬燭光，讓它在這裡永遠燃燒。</p>
+                    </div>
+                    <div class="shrine-input-area">
+                        <textarea id="prayer-input" placeholder="寫下你的託付與祈禱…（例如：祈求家人平安，把我所有的焦慮與眼淚交託給聖母媽媽…）" maxlength="150"></textarea>
+                        <button id="light-candle-btn" class="light-btn">
+                            <span>🕯️</span>
+                            <span>點亮燭光，交託心靈</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 浮動文字容器 -->
+                <div id="prayer-float-container" class="prayer-float-container"></div>
+
+                <!-- 岩洞蠟燭牆 -->
+                <div class="candle-wall">
+                    <div class="wall-arch-label">Massabielle 祈願牆</div>
+                    <div id="candles-grid" class="candles-grid"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ─── Footer 結尾祈禱文 ─── -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-cross">†</div>
+            <h3 class="footer-prayer-title">朝聖結尾祈禱文</h3>
+            <p class="footer-prayer-text">
+                主，在露德，我把自己帶到聖母面前，也帶到祢面前。<br>
+                請讓我在岩洞中學會承認脆弱，在泉水旁學會讓恩寵流動，<br>
+                在苦路上學會接受陪伴，在燭光中學會帶著害怕仍然跟著光走。<br>
+                我不是因為不再害怕才出發。<br>
+                我帶著害怕，仍然願意走向祢。<br>
+                <span class="footer-amen">阿們。Amen.</span>
+            </p>
+            <div class="footer-divider"></div>
+            <div class="footer-links">
+                <a href="index.html">← 返回朝聖主頁</a>
+                <span>·</span>
+                <span>露德 Lourdes · 法國 · 2026年7月</span>
+            </div>
+            <p class="footer-copy">© 2026 朝聖與生命整理之旅 · Pilgrimage to Lourdes & Montserrat</p>
+        </div>
+    </footer>
+
+    <script>
+    // ═══════════════════════════════════════════
+    // 1. 導航列滾動高亮
+    // ═══════════════════════════════════════════
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => {
+            if (window.scrollY >= sec.offsetTop - 180) {
+                current = sec.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+
+        // 導航列滾動後加深背景
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 80) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // ═══════════════════════════════════════════
+    // 2. 金色粒子效果
+    // ═══════════════════════════════════════════
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+        constructor() { this.reset(); this.y = Math.random() * canvas.height; }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = canvas.height + Math.random() * 50;
+            this.size = Math.random() * 2.5 + 0.3;
+            this.speedY = Math.random() * 0.5 + 0.15;
+            this.amplitude = Math.random() * 1.2 + 0.3;
+            this.frequency = Math.random() * 0.02 + 0.005;
+            this.angle = Math.random() * Math.PI * 2;
+            const opacity = Math.random() * 0.35 + 0.08;
+            this.color = `rgba(223, 177, 91, ${opacity})`;
+        }
+        update() {
+            this.y -= this.speedY;
+            this.angle += this.frequency;
+            this.x += Math.sin(this.angle) * 0.25;
+            if (this.y < -10) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 6;
+            ctx.shadowColor = 'rgba(223, 177, 91, 0.5)';
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+    }
+
+    const particles = Array.from({ length: 60 }, () => new Particle());
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ═══════════════════════════════════════════
+    // 3. Web Audio API 教堂鐘聲
+    // ═══════════════════════════════════════════
+    let audioCtx = null;
+    let isAmbientPlaying = false;
+    let droneOscs = [];
+    let droneGain = null;
+    let bellTimer = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    }
+
+    function playBellSound() {
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        const fund = 98;
+        const partials = [
+            { f: 0.5, amp: 1.0, d: 14 }, { f: 1.0, amp: 0.85, d: 9 },
+            { f: 1.2, amp: 0.7, d: 7 },  { f: 1.5, amp: 0.5, d: 5.5 },
+            { f: 2.0, amp: 0.4, d: 4.5 },{ f: 2.6, amp: 0.25,d: 3 },
+            { f: 3.0, amp: 0.15,d: 2.5 },{ f: 4.0, amp: 0.08,d: 1.5 }
+        ];
+        const masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0, now);
+        masterGain.gain.linearRampToValueAtTime(0.25, now + 0.008);
+        masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 14);
+        masterGain.connect(audioCtx.destination);
+        partials.forEach(p => {
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(fund * p.f, now);
+            gainNode.gain.setValueAtTime(p.amp, now);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, now + p.d);
+            osc.connect(gainNode);
+            gainNode.connect(masterGain);
+            osc.start(now);
+            osc.stop(now + p.d + 1);
+        });
+    }
+
+    function startAmbientDrone() {
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+        droneGain = audioCtx.createGain();
+        droneGain.gain.setValueAtTime(0, now);
+        droneGain.gain.linearRampToValueAtTime(0.025, now + 2.5);
+        droneGain.connect(audioCtx.destination);
+        [98, 98.4, 146.8, 196].forEach(f => {
+            const osc = audioCtx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(f, now);
+            const lfo = audioCtx.createOscillator();
+            lfo.frequency.setValueAtTime(0.08 + Math.random() * 0.05, now);
+            const lfoGain = audioCtx.createGain();
+            lfoGain.gain.setValueAtTime(0.006, now);
+            lfo.connect(lfoGain);
+            lfoGain.connect(osc.frequency);
+            osc.connect(droneGain);
+            osc.start(now); lfo.start(now);
+            droneOscs.push(osc, lfo);
+        });
+    }
+
+    function stopAmbientDrone() {
+        if (droneGain) {
+            const now = audioCtx.currentTime;
+            droneGain.gain.cancelScheduledValues(now);
+            droneGain.gain.setValueAtTime(droneGain.gain.value, now);
+            droneGain.gain.linearRampToValueAtTime(0, now + 1.5);
+            setTimeout(() => {
+                droneOscs.forEach(n => { try { n.stop(); } catch(e){} });
+                droneOscs = [];
+            }, 2000);
+        }
+    }
+
+    document.getElementById('ambient-btn').addEventListener('click', () => {
+        initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        if (!isAmbientPlaying) {
+            isAmbientPlaying = true;
+            document.getElementById('ambient-btn').classList.add('playing');
+            document.getElementById('ambient-btn').querySelector('.btn-text').innerText = '暫停靜心';
+            startAmbientDrone();
+            playBellSound();
+            const scheduleNextBell = () => {
+                const next = (18 + Math.random() * 7) * 1000;
+                bellTimer = setTimeout(() => { if (isAmbientPlaying) { playBellSound(); scheduleNextBell(); } }, next);
+            };
+            scheduleNextBell();
+        } else {
+            isAmbientPlaying = false;
+            document.getElementById('ambient-btn').classList.remove('playing');
+            document.getElementById('ambient-btn').querySelector('.btn-text').innerText = '靜心聆聽';
+            stopAmbientDrone();
+            clearTimeout(bellTimer);
+        }
+    });
+
+    document.getElementById('bell-btn').addEventListener('click', () => {
+        initAudio();
+        playBellSound();
+        const btn = document.getElementById('bell-btn');
+        btn.classList.add('ringing');
+        setTimeout(() => btn.classList.remove('ringing'), 600);
+    });
+
+    // ═══════════════════════════════════════════
+    // 4. 虛擬點燈系統
+    // ═══════════════════════════════════════════
+    const prayerInput = document.getElementById('prayer-input');
+    const lightCandleBtn = document.getElementById('light-candle-btn');
+    const candlesGrid = document.getElementById('candles-grid');
+    const prayerFloatContainer = document.getElementById('prayer-float-container');
+
+    let prayers = JSON.parse(localStorage.getItem('lourdes_prayers')) || [
+        { id: 1, text: '祈求媽媽在天國安息，沒有病痛，我把思念交給聖母。' },
+        { id: 2, text: '願家人平安健康，帶著愛與信靠前行。' },
+        { id: 3, text: '把內心的焦慮、恐懼與眼淚交託，求主重新整理我。' },
+        { id: 4, text: '在黑暗中，我願意保護心中那一點小小的燭光。' },
+    ];
+
+    function renderCandles() {
+        candlesGrid.innerHTML = '';
+        prayers.forEach(p => createCandleDOM(p));
+    }
+
+    function createCandleDOM(prayerObj) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'candle-wrapper';
+        wrapper.title = prayerObj.text;
+        wrapper.addEventListener('click', (e) => {
+            showFloatingText(prayerObj.text, e.clientX, e.clientY - 20);
+            initAudio();
+            if (audioCtx) {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const g = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(440, now);
+                g.gain.setValueAtTime(0, now);
+                g.gain.linearRampToValueAtTime(0.04, now + 0.01);
+                g.gain.exponentialRampToValueAtTime(0.0001, now + 2);
+                osc.connect(g);
+                g.connect(audioCtx.destination);
+                osc.start(now);
+                osc.stop(now + 2.5);
+            }
+        });
+        const flame = document.createElement('div');
+        flame.className = 'candle-flame';
+        const body = document.createElement('div');
+        body.className = 'candle-body';
+        wrapper.appendChild(flame);
+        wrapper.appendChild(body);
+        candlesGrid.appendChild(wrapper);
+    }
+
+    function showFloatingText(text, x, y) {
+        const floatText = document.createElement('div');
+        floatText.className = 'floating-prayer-text';
+        floatText.innerText = text;
+        const rect = prayerFloatContainer.getBoundingClientRect();
+        if (x && y) {
+            floatText.style.left = `${x - rect.left}px`;
+            floatText.style.top = `${y - rect.top}px`;
+        } else {
+            floatText.style.left = `${Math.random() * 50 + 25}%`;
+            floatText.style.top = '60%';
+        }
+        prayerFloatContainer.appendChild(floatText);
+        setTimeout(() => floatText.remove(), 6000);
+    }
+
+    lightCandleBtn.addEventListener('click', () => {
+        const text = prayerInput.value.trim();
+        if (!text) { alert('請寫下您的託付或祈禱，再點亮燭光。'); return; }
+        initAudio();
+        playBellSound();
+        const newPrayer = { id: Date.now(), text };
+        prayers.push(newPrayer);
+        localStorage.setItem('lourdes_prayers', JSON.stringify(prayers));
+        createCandleDOM(newPrayer);
+        const btnRect = lightCandleBtn.getBoundingClientRect();
+        showFloatingText(text, btnRect.left + btnRect.width / 2, btnRect.top - 20);
+        prayerInput.value = '';
+        setTimeout(() => {
+            document.querySelector('.candle-wall').scrollIntoView({ behavior: 'smooth' });
+        }, 1000);
+    });
+
+    renderCandles();
+
+    // ═══════════════════════════════════════════
+    // 5. 滾動入場動畫
+    // ═══════════════════════════════════════════
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(
+        '.story-layout, .water-card, .station-card, .intention-item, .prompt-card, .timeline-item, .meaning-item, .candle-meaning-item, .stat-card'
+    ).forEach(el => {
+        el.classList.add('animate-on-scroll');
+        observer.observe(el);
+    });
+
+    </script>
+</body>
+</html>

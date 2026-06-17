@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我讓世界與天主重新整理我 — 2026 朝聖與生命整理之旅</title>
+    <!-- 引入具有宗教古典氣質與現代清晰感的字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- 粒子效果背景 -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- 靜心音效與環境鐘聲控制面板 -->
+    <div id="audio-panel" class="audio-panel">
+        <button id="bell-btn" class="bell-btn" title="敲響心靈之鐘">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M12 2C10.34 2 9 3.34 9 5v1.09C6.16 6.82 4 9.47 4 12.5v4.5L2 19v1h20v-1l-2-2v-4.5c0-3.03-2.16-5.68-5-6.41V5c0-1.66-1.34-3-3-3zm0 20c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/>
+            </svg>
+        </button>
+        <button id="ambient-btn" class="ambient-btn">
+            <span class="pulse-ring"></span>
+            <span class="btn-text">靜心聆聽</span>
+        </button>
+    </div>
+
+    <!-- 頂部磨砂玻璃導航列 -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-sub">2026 Pilgrimage</span>
+            <span class="logo-main">重新整理</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#home" class="active">首頁</a>
+            <a href="#lourdes">露德岩洞</a>
+            <a href="#barcelona">聖家堂</a>
+            <a href="#montserrat">蒙塞拉特</a>
+            <a href="#comparison">心靈對照</a>
+            <a href="#shrine">祈願點燈</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section 1: 首頁 / 靈性宣言 -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="spiritual-badge">2026 Pilgrimage & Self-Reorder</div>
+                <h1 class="main-title">我讓世界與天主<br><span class="highlight">重新整理我</span></h1>
+                <p class="subtitle">2026 從露德到世界盡頭：一場身體、靈魂與信仰的生命整理</p>
+                <div class="divider"></div>
+                <p class="intro-paragraph">
+                    這不是一次單純的觀光打卡，而是一場帶著真實自我、離開熟悉之地的靈魂朝聖。<br>
+                    我走向露德，在岩洞與泉水中交付脆弱；走入巴塞隆納，在未完工的聖家堂見證生命的慢工建造；<br>
+                    我登上 Montserrat 鋸齒山，在黑面聖母前重拾大山般的穩定；踏上庇里牛斯山，用身體磨練界線的智慧；<br>
+                    我更走向極地格陵蘭的荒涼冰川與冰島的水火裂谷，學習在世界的邊緣、生命的破裂之處見證新地貌的創造。<br>
+                    <span class="quote">「我不是只去看世界。我讓世界照見我。我讓天主重新整理我。」</span>
+                </p>
+                <div class="action-buttons">
+                    <a href="#shrine" class="btn btn-primary">前去點燈交託</a>
+                    <a href="#lourdes" class="btn btn-secondary">開啟朝聖之旅</a>
+                </div>
+            </div>
+            <div class="hero-bg-overlay"></div>
+        </section>
+
+        <!-- Section 2: 露德 - 在脆弱中被聖母擁抱 -->
+        <section id="lourdes" class="pilgrimage-section">
+            <div class="section-header">
+                <h2 class="section-title">露德 Lourdes</h2>
+                <p class="section-subtitle">我把脆弱帶到聖母面前</p>
+                <div class="sec-divider"></div>
+            </div>
+
+            <!-- 2.1 露德岩洞 -->
+            <div class="story-block">
+                <div class="story-img-container">
+                    <img src="assets/lourdes_grotto.png" alt="露德聖母岩洞 Massabielle" class="story-img">
+                </div>
+                <div class="story-text">
+                    <div class="block-badge">第一章</div>
+                    <h3>Massabielle 岩洞：邊緣之地的恩寵</h3>
+                    <p>
+                        露德的顯現沒有發生在金碧輝煌的聖殿，而是發生在 Gave 河邊的 Massabielle 岩洞。這裡曾是貧窮的伯爾納德撿拾柴火、謀生掙扎的地方。
+                    </p>
+                    <p class="spiritual-insight">
+                        「岩洞不等於負面情緒，而是代表我生命中幽暗、貧窮、隱藏、被忽略，但天主願意進入並顯現的地方。天主不只在莊嚴體面的地方臨在，祂也進入我的恐懼、焦慮與真實中。我不需要完美才去朝聖，我帶著破碎，聖母媽媽依然在洞穴溫柔地呼喚我。」
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2.2 聖女伯爾納德 -->
+            <div class="story-block reverse">
+                <div class="story-img-container">
+                    <img src="assets/saint_bernadette.png" alt="聖女伯爾納德" class="story-img">
+                </div>
+                <div class="story-text">
+                    <div class="block-badge">第二章</div>
+                    <h3>聖女伯爾納德：在微小中保持真實</h3>
+                    <p>
+                        天主沒有挑選有權威的神父或學者，而是選了貧窮、體弱的女孩伯爾納德。她的意義在於，她在自己的微小中保持了極度的真實與單純。看見什麼就說什麼，不誇大，不討好，也不把自己當成主角。
+                    </p>
+                    <p class="spiritual-insight">
+                        「我不需要把自己看成特別偉大或特別倒楣的人，我只是一個正在被天主帶領的人。不用問我夠不夠資格，而是問我是否願意忠實。真正的勇敢不是沒有恐懼，而是帶著恐懼，依然願意把手交給天主，邁步前行。」
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2.3 泉水、苦路與燭光遊行 -->
+            <div class="story-features">
+                <div class="feature-card">
+                    <div class="card-icon">💧</div>
+                    <h4>醫治的泉水</h4>
+                    <p>
+                        自第九次顯現以來，泉水從昏暗的岩石泥土中流出。泉水代表恩寵，也象徵醫治。這不是魔法，而是天主在人最缺乏、最黑暗的地方，開闢出生生不息的清泉。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">✝️</div>
+                    <h4>苦路默想：同行受難</h4>
+                    <p>
+                        露德的苦路是身體與心靈的祈禱之路。跌倒不是失敗，接受別人幫忙背負十字架也不是軟弱。苦路提醒我們，耶穌陪我們穿越重擔，痛苦不是最後一句，復活與光明才是。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">🕯️</div>
+                    <h4>燭光遊行：黑暗中的光</h4>
+                    <p>
+                        當夜幕低垂，成千上萬朝聖者手持微弱燭火，匯聚成光的河流。這是一幅美麗的畫面：信仰不是假裝生命中沒有黑暗，而是當黑暗降臨時，我們依然願意共同望向那道溫柔的光。
+                    </p>
+                </div>
+            </div>
+
+            <div class="full-width-banner">
+                <img src="assets/lourdes_candlelight.png" alt="露德燭光遊行" class="banner-img">
+                <div class="banner-overlay">
+                    <p class="banner-quote">「在露德，我不必假裝堅強。聖母媽媽，我來了。我帶著媽媽沒有一起來的遺憾，也帶著我多年來的眼淚。」</p>
+                    <a href="lourdes.html" class="deep-explore-btn">
+                        深入探索露德朝聖地 →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Barcelona - 信仰如何成為建築 -->
+        <section id="barcelona" class="pilgrimage-section alt-bg">
+            <div class="section-header">
+                <h2 class="section-title">巴塞隆納 Barcelona</h2>
+                <p class="section-subtitle">聖家堂：生命在建造中</p>
+                <div class="sec-divider"></div>
+            </div>
+
+            <div class="story-block">
+                <div class="story-img-container">
+                    <img src="assets/barcelona_sagrada_familia.png" alt="巴塞隆納聖家堂" class="story-img">
+                </div>
+                <div class="story-text">
+                    <div class="block-badge">第二章</div>
+                    <h3>聖家堂：尚未完成的生命殿堂</h3>
+                    <p>
+                        巴塞隆納的聖家堂是一座施工了百年的教堂。高第並非在此透過石頭炫技，而是以建築訴說深邃的信仰。教堂內高聳入雲的石柱宛如森林中的巨木，陽光透過色彩繽紛的玻璃，將溫暖的橘紅光與深沉的藍綠光交織灑落。
+                    </p>
+                    <p class="spiritual-insight">
+                        「看著那座仍在施工的巍峨高塔，我突然明白：我的生命也像聖家堂一樣，還在施工中。尚未完成並不等於失敗。天主正在慢慢建造我。我不必急著在今天完美，而是相信祂的工藝，容許自己有尚未完工的鷹架，在恩寵的光照下繼續成長。」
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Montserrat - 在山中重新站穩 -->
+        <section id="montserrat" class="pilgrimage-section">
+            <div class="section-header">
+                <h2 class="section-title">蒙塞拉特 Montserrat</h2>
+                <p class="section-subtitle">我在山中學習安靜、交託與站穩</p>
+                <div class="sec-divider"></div>
+            </div>
+
+            <!-- 3.1 鋸齒奇山與修道院 -->
+            <div class="story-block">
+                <div class="story-img-container">
+                    <img src="assets/montserrat_monastery.png" alt="Montserrat 鋸齒山與修道院" class="story-img">
+                </div>
+                <div class="story-text">
+                    <div class="block-badge">第三章</div>
+                    <h3>鋸齒山與本篤會修道院</h3>
+                    <p>
+                        Montserrat 意為「鋸齒之山」，這座壯麗的奇山宛如大自然塑造的巨大聖殿。本篤會修道院在此佇立千年，修士們以祈禱、工作、規律、沉默與接待，用神聖的秩序保護內心的自由。
+                    </p>
+                    <p class="spiritual-insight">
+                        「上山不是征服，而是讓心在宏偉的創造前變得謙卑。當我離開平地的喧囂，走進山與修道院的祈禱鐘聲裡，本篤會的規律教導我：不要用更多焦慮的活動填滿時間，而是用祈禱和秩序，保護心中的平安與自由。」
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3.2 黑面聖母 -->
+            <div class="story-block reverse">
+                <div class="story-img-container">
+                    <img src="assets/black_madonna.png" alt="Montserrat 黑面聖母 La Moreneta" class="story-img">
+                </div>
+                <div class="story-text">
+                    <div class="block-badge">第四章</div>
+                    <h3>黑面聖母 La Moreneta：山中的母親</h3>
+                    <p>
+                        坐在山中的黑面聖母不是可愛甜美的塑像，而是一位莊嚴、穩定、充滿古老智慧的母親。她抱著基督，也將疲憊的朝聖者帶向基督的懷抱。
+                    </p>
+                    <p class="spiritual-insight">
+                        「露德教我：我可以在脆弱中被看見、被撫慰。Montserrat 則教我：我可以在山上重新站穩。凝視著黑面聖母安詳的面容，我把漫長旅途中的恐慌、擔憂與我所深愛的人，全部交託給她。因為我知道，她會用大山般的穩定接住我。」
+                    </p>
+                </div>
+            </div>
+
+            <div class="full-width-banner">
+                <img src="assets/montserrat_monastery.png" alt="Montserrat 鋸齒大山" class="banner-img">
+                <div class="banner-overlay">
+                    <p class="banner-quote">「山讓我安靜，聖母把我帶向基督，修道院教我用祈禱整理一天。」</p>
+                    <a href="montserrat.html" class="deep-explore-btn">
+                        深入探索蒙塞拉特朝聖地 →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: 靈修對照 - 兩位聖母，兩種整理 -->
+        <section id="comparison" class="comparison-section">
+            <div class="section-header">
+                <h2 class="section-title">兩位聖母，兩種整理</h2>
+                <p class="section-subtitle">在脆弱中得到醫治，在山頂上重獲力量</p>
+                <div class="sec-divider"></div>
+            </div>
+
+            <div class="comparison-grid">
+                <!-- Lourdes Card -->
+                <div class="comp-card">
+                    <div class="comp-card-header lourdes-theme">
+                        <h3>露德 Lourdes</h3>
+                        <span class="comp-badge">脆弱與醫治</span>
+                    </div>
+                    <div class="comp-card-body">
+                        <ul>
+                            <li><strong>靈性空間：</strong> 岩洞、醫治泉水、病人朝聖地</li>
+                            <li><strong>聖母形象：</strong> 洞穴中溫柔呼喚的母親</li>
+                            <li><strong>內在方向：</strong> 承認脆弱、交託眼淚、尋求安慰與醫治</li>
+                            <li><strong>靈修核心句：</strong> 「在露德，我不必假裝堅強。」</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Montserrat Card -->
+                <div class="comp-card">
+                    <div class="comp-card-header montserrat-theme">
+                        <h3>蒙塞拉特 Montserrat</h3>
+                        <span class="comp-badge">堅固與重新站穩</span>
+                    </div>
+                    <div class="comp-card-body">
+                        <ul>
+                            <li><strong>靈性空間：</strong> 鋸齒奇山、本篤會修道院、黑面聖母</li>
+                            <li><strong>聖母形象：</strong> 山中莊嚴守護、安祥穩定的母親</li>
+                            <li><strong>內在方向：</strong> 上山尋求安靜、建立心靈秩序、重獲力量</li>
+                            <li><strong>靈修核心句：</strong> 「在 Montserrat，我讓山與修道院帶我安靜。」</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 三層精神架構說明 -->
+            <div class="spiritual-framework">
+                <h3>朝聖的生命整理架構</h3>
+                <div class="framework-grid">
+                    <div class="framework-item">
+                        <div class="f-icon">🏛️</div>
+                        <h4>希臘式反省：理解自己</h4>
+                        <p>這趟旅程不是逃避，而是深入靈魂。去追問我是誰、我如何面對恐慌、原生家庭與思念。不急著修好自己，而是先溫柔地看見自己。</p>
+                    </div>
+                    <div class="framework-item">
+                        <div class="f-icon">🛡️</div>
+                        <h4>羅馬式秩序：保護自己</h4>
+                        <p>縝密的行程、火車票、彌撒時間與風險管理，並非焦慮控制，而是用智慧與界線建立可持續的節奏，保護自己的自由與心靈。</p>
+                    </div>
+                    <div class="framework-item">
+                        <div class="f-icon">⛪</div>
+                        <h4>基督信仰：交給天主</h4>
+                        <p>不是把人生整理得完美無瑕才交出，而是在混亂、不完整、害怕與未完成中，依然相信天主早已在我生命中工作。主，剩下的我交給祢。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: 互動祈願岩洞 -->
+        <section id="shrine" class="shrine-section">
+            <div class="shrine-overlay">
+                <div class="section-header">
+                    <h2 class="section-title">心靈祈願岩洞</h2>
+                    <p class="section-subtitle">點亮一盞燭火，將你的脆弱與所愛之人交託給天主與聖母</p>
+                    <div class="sec-divider"></div>
+                </div>
+
+                <!-- 點燈操作區 -->
+                <div class="shrine-control-box">
+                    <p class="shrine-instruction">
+                        「聖母媽媽，我來了。我帶著多年來的眼淚、恐懼，與對家人的牽掛……」<br>
+                        請在下方寫下你最想帶到聖母面前的託付，我們將為你點燃一盞永恆燃燒的虛擬燭光。
+                    </p>
+                    <div class="input-group">
+                        <textarea id="prayer-input" placeholder="寫下你的託付與祈禱（例如：祈求家人平安健康，將我所有的焦慮與眼淚交託給您...）" maxlength="150"></textarea>
+                        <button id="light-candle-btn" class="btn btn-primary">點亮燭光，交託心靈</button>
+                    </div>
+                </div>
+
+                <!-- 祈禱文字漂浮區 -->
+                <div id="prayer-float-container" class="prayer-float-container"></div>
+
+                <!-- 岩洞蠟燭牆 -->
+                <div class="shrine-cave-wall">
+                    <div class="grotto-arch">
+                        <div class="grotto-title">Massabielle 祈願牆</div>
+                        <div id="candles-grid" class="candles-grid">
+                            <!-- 動態生成的蠟燭會被插入到這裡 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 結尾祈禱文 Banner -->
+    <footer class="closing-prayer-section">
+        <div class="prayer-box">
+            <span class="cross">†</span>
+            <h3>朝聖結尾祈禱文</h3>
+            <p class="prayer-text">
+                主，我把自己帶到祢面前，也帶到祢所創造的世界面前。<br>
+                願我在露德學會承認脆弱，在 Montserrat 學會安靜聆聽，在聖家堂學會相信未完成的生命；<br>
+                在庇里牛斯學會身體的界線，在格陵蘭學會荒涼中的尊嚴，在冰島學會破裂之處仍有新地貌的創造。<br>
+                求祢用世界打開我，用秩序保護我，用信仰接住我。<br>
+                我願意讓世界與祢，重新整理我。<br>
+                <span class="amen">阿們。</span>
+            </p>
+        </div>
+        <p class="copyright">© 2026 Lourdes, Montserrat & World's Edge 朝聖生命整理之旅. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 1. 導航列 active 狀態隨滾動更新
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // 2. 背景燭光粒子 Canvas 效果
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height; // 初始隨機分布
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 50;
+                this.size = Math.random() * 3.5 + 0.5;
+                this.speedY = Math.random() * 0.6 + 0.2;
+                this.amplitude = Math.random() * 1.5 + 0.5;
+                this.frequency = Math.random() * 0.02 + 0.005;
+                this.angle = Math.random() * Math.PI * 2;
+                // 蠟燭火焰的暖金黃色調
+                const hue = Math.random() * 15 + 35; // 35-50黃金色
+                const opacity = Math.random() * 0.4 + 0.15;
+                this.color = `rgba(223, 177, 91, ${opacity})`;
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.angle += this.frequency;
+                this.x += Math.sin(this.angle) * 0.3; // 微弱的左右晃動，像燭火飄動
+
+                if (this.y < -10) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                // 金黃發光陰影效果
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = 'rgba(223, 177, 91, 0.6)';
+                ctx.fill();
+                ctx.shadowBlur = 0; // 重置陰影避免影響其他繪製
+            }
+        }
+
+        const particles = Array.from({ length: 80 }, () => new Particle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // 3. Web Audio API 教堂鐘聲與環境低吟合成器
+        let audioCtx = null;
+        let isAmbientPlaying = false;
+        let droneOscs = [];
+        let droneGain = null;
+        let bellTimer = null;
+
+        const ambientBtn = document.getElementById('ambient-btn');
+        const bellBtn = document.getElementById('bell-btn');
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        // 合成悠遠大鐘聲
+        function playBellSound() {
+            if (!audioCtx) return;
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const now = audioCtx.currentTime;
+            const fund = 98; // G2 大致頻率，沉穩悠遠
+            
+            // 鐘聲的物理分音比率 (Hum, Prime, Minor third, Fifth, Octave...)
+            const partials = [
+                { f: 0.5,  amp: 1.0,  d: 14 },
+                { f: 1.0,  amp: 0.85, d: 9 },
+                { f: 1.2,  amp: 0.7,  d: 7 },
+                { f: 1.5,  amp: 0.5,  d: 5.5 },
+                { f: 2.0,  amp: 0.4,  d: 4.5 },
+                { f: 2.6,  amp: 0.25, d: 3 },
+                { f: 3.0,  amp: 0.15, d: 2.5 },
+                { f: 4.0,  amp: 0.08, d: 1.5 }
+            ];
+
+            const masterGain = audioCtx.createGain();
+            masterGain.gain.setValueAtTime(0, now);
+            // 快速敲打起音
+            masterGain.gain.linearRampToValueAtTime(0.25, now + 0.008);
+            // 長期指數衰減
+            masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 14);
+            masterGain.connect(audioCtx.destination);
+
+            partials.forEach(p => {
+                const osc = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+
+                // 使用 sine 波能展現空靈的金屬共鳴
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(fund * p.f, now);
+
+                // 為每個分音設定各自的衰減速度與振幅
+                gainNode.gain.setValueAtTime(p.amp, now);
+                gainNode.gain.exponentialRampToValueAtTime(0.0001, now + p.d);
+
+                osc.connect(gainNode);
+                gainNode.connect(masterGain);
+
+                osc.start(now);
+                osc.stop(now + p.d + 1);
+            });
+        }
+
+        // 啟動環境低吟 (Cathedral Ambient Drone)
+        function startAmbientDrone() {
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            
+            droneGain = audioCtx.createGain();
+            droneGain.gain.setValueAtTime(0, now);
+            droneGain.gain.linearRampToValueAtTime(0.025, now + 2.5); // 緩慢漸入
+            droneGain.connect(audioCtx.destination);
+
+            // 根音 G2, 微調 G2, 五度 D3, 八度 G3
+            const freqs = [98, 98.4, 146.8, 196];
+            freqs.forEach(f => {
+                const osc = audioCtx.createOscillator();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(f, now);
+
+                // 使用緩慢的 LFO 來調變頻率，創造空氣微動與風管感
+                const lfo = audioCtx.createOscillator();
+                lfo.frequency.setValueAtTime(0.08 + Math.random() * 0.05, now);
+                const lfoGain = audioCtx.createGain();
+                lfoGain.gain.setValueAtTime(0.006, now);
+
+                lfo.connect(lfoGain);
+                lfoGain.connect(osc.frequency);
+
+                osc.connect(droneGain);
+                
+                osc.start(now);
+                lfo.start(now);
+
+                droneOscs.push(osc, lfo);
+            });
+        }
+
+        function stopAmbientDrone() {
+            if (droneGain) {
+                const now = audioCtx.currentTime;
+                droneGain.gain.cancelScheduledValues(now);
+                droneGain.gain.setValueAtTime(droneGain.gain.value, now);
+                droneGain.gain.linearRampToValueAtTime(0, now + 1.5); // 漸出
+                setTimeout(() => {
+                    droneOscs.forEach(node => {
+                        try { node.stop(); } catch(e) {}
+                    });
+                    droneOscs = [];
+                }, 2000);
+            }
+        }
+
+        // 靜心按鈕點擊事件
+        ambientBtn.addEventListener('click', () => {
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            if (!isAmbientPlaying) {
+                isAmbientPlaying = true;
+                ambientBtn.classList.add('playing');
+                ambientBtn.querySelector('.btn-text').innerText = '暫停靜心';
+                startAmbientDrone();
+                playBellSound(); // 進入時先敲一聲鐘
+
+                // 設定每隔 18-25 秒隨機敲一次鐘
+                const scheduleNextBell = () => {
+                    const nextTime = (18 + Math.random() * 7) * 1000;
+                    bellTimer = setTimeout(() => {
+                        if (isAmbientPlaying) {
+                            playBellSound();
+                            scheduleNextBell();
+                        }
+                    }, nextTime);
+                };
+                scheduleNextBell();
+            } else {
+                isAmbientPlaying = false;
+                ambientBtn.classList.remove('playing');
+                ambientBtn.querySelector('.btn-text').innerText = '靜心聆聽';
+                stopAmbientDrone();
+                clearTimeout(bellTimer);
+            }
+        });
+
+        // 獨立手動敲鐘按鈕
+        bellBtn.addEventListener('click', () => {
+            initAudio();
+            playBellSound();
+            // 觸發按鈕微弱震動動畫
+            bellBtn.classList.add('ringing');
+            setTimeout(() => bellBtn.classList.remove('ringing'), 600);
+        });
+
+
+        // 4. 虛擬祈願點燈與 localStorage 持久化
+        const prayerInput = document.getElementById('prayer-input');
+        const lightCandleBtn = document.getElementById('light-candle-btn');
+        const candlesGrid = document.getElementById('candles-grid');
+        const prayerFloatContainer = document.getElementById('prayer-float-container');
+
+        // 從 localStorage 讀取祈禱紀錄
+        let prayers = JSON.parse(localStorage.getItem('pilgrimage_prayers')) || [
+            { id: 1, text: "祈求母親在天國安息，沒有病痛，我把思念交給聖母。" },
+            { id: 2, text: "願家人平安健康，特別是姪子們能快樂長大。" },
+            { id: 3, text: "把內心的焦慮、恐懼與感情創傷交託，求主重新整理我。" },
+            { id: 4, text: "希望在旅程中，能學會本篤會山中的安靜與規律生活。" }
+        ];
+
+        // 渲染牆面上的蠟燭
+        function renderCandles() {
+            candlesGrid.innerHTML = '';
+            prayers.forEach(p => {
+                createCandleDOM(p);
+            });
+        }
+
+        function createCandleDOM(prayerObj) {
+            const candleWrapper = document.createElement('div');
+            candleWrapper.className = 'candle-wrapper';
+            candleWrapper.title = prayerObj.text;
+            
+            // 點擊蠟燭會浮現其託付內容
+            candleWrapper.addEventListener('click', (e) => {
+                showFloatingText(prayerObj.text, e.clientX, e.clientY - 20);
+                initAudio();
+                // 輕輕響一聲鐘的極微弱高頻泛音，表示祝福
+                if (audioCtx) {
+                    const now = audioCtx.currentTime;
+                    const osc = audioCtx.createOscillator();
+                    const g = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, now); // 高頻微弱鈴聲
+                    g.gain.setValueAtTime(0, now);
+                    g.gain.linearRampToValueAtTime(0.05, now + 0.01);
+                    g.gain.exponentialRampToValueAtTime(0.0001, now + 2);
+                    osc.connect(g);
+                    g.connect(audioCtx.destination);
+                    osc.start(now);
+                    osc.stop(now + 2.5);
+                }
+            });
+
+            const flame = document.createElement('div');
+            flame.className = 'candle-flame';
+            
+            const body = document.createElement('div');
+            body.className = 'candle-body';
+
+            candleWrapper.appendChild(flame);
+            candleWrapper.appendChild(body);
+            candlesGrid.appendChild(candleWrapper);
+        }
+
+        // 浮現託付文字動畫
+        function showFloatingText(text, x, y) {
+            const floatText = document.createElement('div');
+            floatText.className = 'floating-prayer-text';
+            floatText.innerText = text;
+            
+            // 決定顯示位置，若為手機板無座標則顯示在容器中央
+            if (x && y) {
+                // 將相對螢幕的座標轉為相對於容器
+                const rect = prayerFloatContainer.getBoundingClientRect();
+                floatText.style.left = `${x - rect.left}px`;
+                floatText.style.top = `${y - rect.top}px`;
+            } else {
+                floatText.style.left = `${Math.random() * 50 + 25}%`;
+                floatText.style.top = `60%`;
+            }
+
+            prayerFloatContainer.appendChild(floatText);
+
+            // 動畫結束後移除
+            setTimeout(() => {
+                floatText.remove();
+            }, 6000);
+        }
+
+        // 點燈按鈕點擊事件
+        lightCandleBtn.addEventListener('click', () => {
+            const text = prayerInput.value.trim();
+            if (!text) {
+                alert("請寫下您的託付或祈禱，再點亮燭光。");
+                return;
+            }
+
+            initAudio();
+            playBellSound(); // 點燈時敲響一聲心靈之鐘
+
+            const newPrayer = {
+                id: Date.now(),
+                text: text
+            };
+
+            prayers.push(newPrayer);
+            localStorage.setItem('pilgrimage_prayers', JSON.stringify(prayers));
+
+            // 在畫面上建立蠟燭
+            createCandleDOM(newPrayer);
+
+            // 觸發文字上浮特效
+            const btnRect = lightCandleBtn.getBoundingClientRect();
+            showFloatingText(text, btnRect.left + btnRect.width / 2, btnRect.top - 20);
+
+            // 清空輸入框
+            prayerInput.value = '';
+
+            // 平滑滾動到蠟燭牆，讓使用者看見點亮的燭光
+            setTimeout(() => {
+                document.querySelector('.shrine-cave-wall').scrollIntoView({ behavior: 'smooth' });
+            }, 1000);
+        });
+
+        // 初始渲染
+        renderCandles();
+    </script>
+</body>
+</html>

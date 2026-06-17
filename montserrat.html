@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蒙塞拉特 Montserrat — 在山中重新站穩 | 2026 朝聖與生命整理</title>
+    <meta name="description" content="蒙塞拉特 Montserrat，鋸齒奇山，黑面聖母 La Moreneta，本篤會修道傳統，Sant Miquel 健行與身體祈禱。用腳步整理心，在山上找回穩定的內在力量。">
+    <!-- 引入具有古典神聖感的字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="montserrat.css">
+</head>
+<body>
+
+    <!-- 背景金色大山粒子畫布 -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- 音效面板 -->
+    <div class="audio-panel" id="audio-panel">
+        <button class="bell-btn" id="bell-btn" title="敲響心靈之鐘">
+            <svg viewBox="0 0 24 24" class="icon">
+                <path d="M12 2C10.34 2 9 3.34 9 5v1.09C6.16 6.82 4 9.47 4 12.5v4.5L2 19v1h20v-1l-2-2v-4.5c0-3.03-2.16-5.68-5-6.41V5c0-1.66-1.34-3-3-3zm0 20c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/>
+            </svg>
+        </button>
+        <button class="ambient-btn" id="ambient-btn">
+            <span class="pulse-ring"></span>
+            <span class="btn-text">靜心聆聽</span>
+        </button>
+    </div>
+
+    <!-- 導航列 -->
+    <header class="navbar" id="navbar">
+        <div class="nav-logo">
+            <a href="index.html" class="back-link" title="返回首頁">← 朝聖地圖</a>
+            <div class="logo-center">
+                <span class="logo-en">Montserrat</span>
+                <span class="logo-zh">蒙塞拉特聖所</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#hero">聖山</a>
+            <a href="#mountain">鋸齒奇山</a>
+            <a href="#madonna">黑面聖母</a>
+            <a href="#monastery">修道傳統</a>
+            <a href="#hiking">山中健行</a>
+            <a href="#shrine">山中靜室</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ─── Hero Section ─── -->
+        <section id="hero" class="hero-section">
+            <div class="hero-bg">
+                <img src="assets/montserrat_monastery.png" alt="Montserrat 鋸齒山與修道院" class="hero-bg-img">
+                <div class="hero-veil"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">2026 · Montserrat · Spain</div>
+                <h1 class="hero-title">
+                    蒙 塞 拉 特
+                    <span class="hero-title-en">Montserrat</span>
+                </h1>
+                <div class="hero-divider">
+                    <span>✦</span>
+                    <span class="divider-line"></span>
+                    <span>†</span>
+                    <span class="divider-line"></span>
+                    <span>✦</span>
+                </div>
+                <p class="hero-subtitle">我在山中學習安靜、交託與站穩</p>
+                <p class="hero-tagline">
+                    「我上山，不只是為了風景，<br>
+                    而是為了把心帶到更安靜、更高的地方。」
+                </p>
+                <div class="hero-scroll-hint">
+                    <span>↓</span>
+                    <span>向下探索大山之靈</span>
+                </div>
+            </div>
+            <div class="hero-location-tag">
+                <span>📍</span>
+                <span>西班牙加泰隆尼亞 · 鋸齒山自然公園 · 海拔 1,236 米</span>
+            </div>
+        </section>
+
+        <!-- ─── 引言區塊 ─── -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <div class="section-badge">關於蒙塞拉特</div>
+                        <h2 class="section-heading">大山，是不說話的聖殿</h2>
+                        <p>
+                            Montserrat 對於你來說，不是巴塞隆納近郊拍照打卡的一日遊行程，而是一場重要的「山中朝聖站」。如果你先在露德（Lourdes）觸摸了岩洞的泉水、在脆弱與眼淚中得到聖母溫柔的撫慰；接著在巴塞隆納看見高第如何將人的信德建成巨石與彩光；那麼在蒙塞拉特，你要把身體帶進山中，用每一步前進，讓信仰變成踏實的腳步、沈默與凝望。
+                        </p>
+                        <p>
+                            這裡由獨特的硬礫岩與沉積物經過千萬年風雨侵蝕，塑造出無數宛如手指、守護者般高聳矗立的針狀石峰。本篤會修道院在此佇立千年，修士們以祈禱、沈默與工作，守護著這片自然聖殿中永恆的時間節奏。
+                        </p>
+                        <blockquote class="intro-quote">
+                            「露德教導我：<strong>我可以在脆弱中被看見。</strong><br>
+                            蒙塞拉特教導我：<strong>我可以在山上重新站穩。</strong>」
+                        </blockquote>
+                    </div>
+                    <div class="intro-stats">
+                        <div class="stat-card">
+                            <div class="stat-num">1025</div>
+                            <div class="stat-label">修道院創立年份</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">1,238m</div>
+                            <div class="stat-label">鋸齒山最高峰</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">80+</div>
+                            <div class="stat-label">駐山修士人數</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">1000年</div>
+                            <div class="stat-label">聖山朝聖歷史</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 第一章：鋸齒奇山 ─── -->
+        <section id="mountain" class="chapter-section alt-chapter">
+            <div class="chapter-number-bg">01</div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">第一章 · Chapter I</div>
+                    <h2 class="chapter-title">鋸齒奇山</h2>
+                    <p class="chapter-subtitle">這座山不是背景，它本身就是朝聖的一部分</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="story-layout">
+                    <div class="story-image-col">
+                        <div class="story-img-frame">
+                            <img src="assets/pyrenees_hiking.png" alt="Montserrat 的山脊健行地貌" class="story-img">
+                            <div class="img-caption">
+                                <span class="caption-cross">✦</span>
+                                蒙塞拉特鋸齒奇山 · 風雨雕刻出的時間紀念碑
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-text-col">
+                        <p class="story-lead">
+                            Montserrat 在加泰隆尼亞語中，字面意思就是「鋸齒狀的山」。它不像一般連綿起伏、平順柔和的青翠山體，而是由一根根、一柱一柱硬礫岩垂直站立組成的奇異地貌。
+                        </p>
+                        <p>
+                            站在修道院廣場或漫步山路上，你會強烈感覺到：不是人類在這座山頂上建立了一座壯麗的聖所，而是大山本身早已是一座由上天設計、大自然塑造的巨大天然聖殿。在這裡，修道院很小，山很大；人類的建築並非要在這裡宣示支配，而是謙卑地嵌在大山的懷抱中，在大自然的沉默裡尋找天主。
+                        </p>
+                        <p>
+                            當你離開了平地的噪音與喧囂，走向這座有稜角、有高度、有距離感的大山時，山風和開闊的視野會邀請你做三件事：
+                        </p>
+
+                        <h4 class="sub-heading">在鋸齒山前的三種凝視</h4>
+                        <div class="mountain-features">
+                            <div class="m-feature-card">
+                                <div class="m-icon">⛰️</div>
+                                <h4>凝視山的輪廓</h4>
+                                <p>觀察那些歷經萬年侵蝕、像守護者般站立的岩柱。這提醒你：內在的穩固與力量不是一天達成的，是在風雨與時間的淬鍊下，慢慢留下來的部分。</p>
+                            </div>
+                            <div class="m-feature-card">
+                                <div class="m-icon">☁️</div>
+                                <h4>觀察雲霧流動</h4>
+                                <p>看雲霧、風和陽光如何隨時改變山的外觀。大山不變，但天氣在變。就像你的內在也有焦慮與風暴，但你的本質依然如大山般穩固，不因風雨而傾覆。</p>
+                            </div>
+                            <div class="m-feature-card">
+                                <div class="m-icon">🧘</div>
+                                <h4>覺察內心的山</h4>
+                                <p>在大山的安靜中，問自己：我現在的心，是像吵雜的平地城市，還是像這座安靜的高山？我是否願意相信，我的心也可以擁有大山般穩定的力量？</p>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <div class="insight-icon">✝</div>
+                            <div>
+                                <h4>山中默想問題</h4>
+                                <p>「我一直在尋找安全感。但我的安全感是建立在『事情必須完全被我掌控』的焦慮中，還是建立在『不論環境如何，我都如大山般被托住』的信賴中？」</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-banner">
+                    <span class="prayerbanner-cross">†</span>
+                    <p>「天主，今天我站在這座美麗的自然聖殿前。<br>
+                    請用大山的穩固平息我心中的焦慮。<br>
+                    請讓我知道，我不需要急著掌控一切，因為祢的手正如大山般托住我的生命。」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 第二章：黑面聖母 ─── -->
+        <section id="madonna" class="chapter-section">
+            <div class="chapter-number-bg">02</div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">第二章 · Chapter II</div>
+                    <h2 class="chapter-title">黑面聖母 La Moreneta</h2>
+                    <p class="chapter-subtitle">山中的母親：用大山的穩定接住你</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="story-layout reverse-layout">
+                    <div class="story-image-col">
+                        <div class="story-img-frame">
+                            <img src="assets/black_madonna.png" alt="Montserrat 黑面聖母 La Moreneta" class="story-img">
+                            <div class="img-caption">
+                                <span class="caption-cross">✦</span>
+                                黑面聖母 La Moreneta · 加泰隆尼亞人的文化守護者
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-text-col">
+                        <p class="story-lead">
+                            供奉在蒙塞拉特大殿深處的聖像，是加泰隆尼亞人親切稱呼的「小黑聖母」La Moreneta。這尊 12 世紀羅曼式的木雕聖像，雙面呈黑色，坐在寶座上，懷抱著聖嬰。
+                        </p>
+                        <p>
+                            她不是尋常的「可愛、甜美型」聖母像，而是一位神情莊嚴、安祥、充滿古老智慧的母親。她右手握著一個球體，代表宇宙和世界，而左手與膝上的聖嬰耶穌，則舉手向來到她面前的朝聖者賜下祝福。聖嬰手捧松果，象徵著無窮的生命與繁衍。
+                        </p>
+                        <p>
+                            關於膚色為什麼呈深黑色，除了宗教傳說外，藝術史學家指出是木雕彩繪在千百年間，長期受到聖殿內香火、香爐與燭煙的薰染，加上保護漆的化學反應與氧化而逐漸變深。但對每一位攀上大山的朝聖者而言，這尊深色的聖像代表著：<strong>她是一位被時間、淚水、世代的祈禱共同凝望、共同留下來的母親。</strong>
+                        </p>
+
+                        <div class="insight-box">
+                            <div class="insight-icon">⛪</div>
+                            <div>
+                                <h4>兩位聖母的靈修對照</h4>
+                                <p>當你把露德聖母與蒙塞拉特聖母放在一起思考時，你的信仰與生命整理會變得更完整：</p>
+                            </div>
+                        </div>
+
+                        <div class="comparison-table">
+                            <div class="comp-row header-row">
+                                <span>露德 Lourdes 聖母</span>
+                                <span>蒙塞拉特 Montserrat 聖母</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>顯現於 Gave 河旁的幽暗岩洞</span>
+                                <span>供奉於巍峨高聳的鋸齒山巔</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>溫柔的呼喚：在脆弱中接納我的眼淚</span>
+                                <span>莊嚴的守護：在穩定中重建我的力量</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>靈修核心：「我不必假裝堅強」</span>
+                                <span>靈修核心：「我在大山中重新站穩」</span>
+                            </div>
+                            <div class="comp-row">
+                                <span>醫治受傷的自我，承認痛與無能為力</span>
+                                <span>建立新的內在秩序，迎接勇氣與力量</span>
+                            </div>
+                        </div>
+
+                        <p>
+                            當你排隊靠近黑面聖母時，你不必對她說很多話。你可以只是凝視她的莊嚴，像孩子走向母親那樣，把你的飛行焦慮、旅途中的恐慌、對自己能力的懷疑、以及放不下的原生家庭，全都放在她和基督面前。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="prayer-banner">
+                    <span class="prayerbanner-cross">†</span>
+                    <p>「聖母媽媽，La Moreneta，山中的母親。<br>
+                    我把我的害怕、想變勇敢的渴望，都交託在妳和基督的懷抱中。<br>
+                    請陪我走這趟旅程，請教導我在大山與信仰的磐石上，重新站穩。」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 第三章：本篤會修道傳統 ─── -->
+        <section id="monastery" class="chapter-section alt-chapter">
+            <div class="chapter-number-bg">03</div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">第三章 · Chapter III</div>
+                    <h2 class="chapter-title">本篤會修道傳統</h2>
+                    <p class="chapter-subtitle">Ora et Labora：祈禱與工作</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="story-layout">
+                    <div class="story-image-col">
+                        <div class="story-img-frame">
+                            <img src="assets/montserrat_monastery.png" alt="Montserrat 本篤會修道院" class="story-img">
+                            <div class="img-caption">
+                                <span class="caption-cross">✦</span>
+                                千年本篤會修道院 · 用神聖的秩序守護時間與內心
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-text-col">
+                        <p class="story-lead">
+                            Montserrat 修道院是一個成立於 1025 年、至今仍在每日運作的本篤會修道院。修士們在此的生活遵循《聖本篤會規》，其核心精神可以濃縮成兩個拉丁單字：<strong>Ora et Labora（祈禱與工作）</strong>。
+                        </p>
+                        <p>
+                            這不是修士們逃避世界在山上享清福。相反地，這是一種用秩序對抗混亂的生活態度。在城市裡，時間是碎裂的、是趕路、是行程表、是滑動的手機和效率的催促。而在修道院裡，時間是規律的、是鐘聲、是沈默、是重複的聖詠與奉獻。
+                        </p>
+                        <p>
+                            在山上住一晚，你的心會在修士的規律祈禱與沈默的鐘聲中，被悄悄地重新整理。這不是控制，而是用邊界與節奏保護內心的自由。
+                        </p>
+
+                        <div class="monastery-rhythm">
+                            <h3 class="rhythm-title">聖山修道院的一日神聖節奏</h3>
+                            <div class="timeline-horizontal">
+                                <div class="timeline-h-item">
+                                    <div class="timeline-h-time">07:30</div>
+                                    <h4>晨禱 Lauds</h4>
+                                    <p>將一天的開始與大山的晨光一同奉獻，在沈默中迎接口氣與生命。</p>
+                                </div>
+                                <div class="timeline-h-item">
+                                    <div class="timeline-h-time">11:00</div>
+                                    <h4>Conventual Mass</h4>
+                                    <p>修道團體的核心彌撒。把你這段旅程與步伐，放進教會長久的祈禱中。</p>
+                                </div>
+                                <div class="timeline-h-item">
+                                    <div class="timeline-h-time">18:45</div>
+                                    <h4>晚禱 Vespers</h4>
+                                    <p>在黃昏時分回到大殿，把一天的健行、看山、交託，都安靜地交回天主手裡。</p>
+                                </div>
+                                <div class="timeline-h-item">
+                                    <div class="timeline-h-time">20:00</div>
+                                    <h4>夜禱與沈默</h4>
+                                    <p>在大山的夜幕中進入大沈默。大山的寧靜讓你聽見心底深處真正的聲音。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="insight-box">
+                            <div class="insight-icon">†</div>
+                            <div>
+                                <h4>給你的修道時間練習</h4>
+                                <p>當你身處陌生地方或內心焦慮時，試著像本篤會一樣：不要用更多焦慮的活動填滿時間，而是用安靜的呼吸、看山、和祈禱，建立內心的邊界。你不是孤單的在大世界裡流浪，你在天主的秩序裡被安頓。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-banner">
+                    <span class="prayerbanner-cross">†</span>
+                    <p>「主，在修道院的鐘聲裡，我將我的一天與我的時間交給祢。<br>
+                    請洗淨我對時間的焦慮、害怕來不及的恐慌。<br>
+                    請教導我用規律的步伐與交託的沈默，在祢的愛裡安頓我焦躁的心。」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 第四章：山中健行與用腳祈禱 ─── -->
+        <section id="hiking" class="chapter-section map-section">
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">第四章 · Chapter IV</div>
+                    <h2 class="chapter-title">山中朝聖與健行</h2>
+                    <p class="chapter-subtitle">Hiking：用腳祈禱，用山路整理心</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="map-layout">
+                    <div class="map-img-wrap">
+                        <img src="docs/地圖-2026-0711-Montserrat朝聖GPT.png" alt="Montserrat 健行朝聖地圖" class="pilgrimage-map">
+                        <div class="map-overlay-label">2026 · 蒙塞拉特朝聖地圖</div>
+                    </div>
+                    <div class="map-desc">
+                        <div class="map-point">
+                            <div class="map-point-dot cross-dot"></div>
+                            <div>
+                                <strong>Creu de Sant Miquel (聖彌額爾十字架)</strong>
+                                <p>健行主線的終點。矗立在山脊邊緣，能俯瞰整座修道院嵌在巨大岩峰懷抱中的壯麗景象。</p>
+                            </div>
+                        </div>
+                        <div class="map-point">
+                            <div class="map-point-dot hermitage-dot"></div>
+                            <div>
+                                <strong>Sant Miquel Hermitage (聖彌額爾小堂)</strong>
+                                <p>掩映在岩壁下與森林深處的古老小堂，提供朝聖者健行中途安靜駐足、祈禱的角落。</p>
+                            </div>
+                        </div>
+                        <div class="map-point">
+                            <div class="map-point-dot monastery-dot"></div>
+                            <div>
+                                <strong>Santa Maria 修道院區</strong>
+                                <p>一切路線的起點與終點，是聖山朝聖者的靈魂大本營，也是修士生活的核心大殿。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hike-options-grid">
+                    <!-- Option 1 -->
+                    <div class="hike-card recommended">
+                        <span class="recommended-badge">（主推方案）身體與心的安靜</span>
+                        <h3>方案一：Creu de Sant Miquel 聖彌額爾十字架</h3>
+                        <p class="hike-subtitle">短而視野開闊的身體祈禱，不給體力帶來過度壓力</p>
+                        
+                        <div class="hike-specs">
+                            <div class="spec-item"><span class="spec-val">2.6k</span><span class="spec-label">來回距離</span></div>
+                            <div class="spec-item"><span class="spec-val">1~1.5h</span><span class="spec-label">預估時間</span></div>
+                            <div class="spec-item"><span class="spec-val">210m</span><span class="spec-label">累計爬升</span></div>
+                            <div class="spec-item"><span class="spec-val">易/中</span><span class="spec-label">難度等級</span></div>
+                        </div>
+
+                        <ul class="hike-details">
+                            <li>從修道院沿 Camí de Sant Miquel 緩步上山，路徑寬闊好走。</li>
+                            <li>終點為矗立在懸崖邊緣的聖彌額爾十字架，坐擁俯瞰修道院的經典全景。</li>
+                            <li>預估安排在下午 14:30–16:00，回程後能留出充足時間休息、梳洗，從容參加傍晚的 18:45 晚禱。</li>
+                        </ul>
+
+                        <div class="hike-insight">
+                            <h5>靈性焦點</h5>
+                            <p>「我走向十字架，不是為了在社交媒體上炫耀我征服了這座山。我是用我的步伐配合我的呼吸，讓我的腳步慢下來。每一步都是一聲：主，我把焦慮交給祢，我朝著祢走去。」</p>
+                        </div>
+                    </div>
+
+                    <!-- Option 2 -->
+                    <div class="hike-card">
+                        <h3>方案二：小堂與 Stations of the Cross 苦路小環線</h3>
+                        <p class="hike-subtitle">更完整、具備朝聖意義的體力升級健行路線</p>
+                        
+                        <div class="hike-specs">
+                            <div class="spec-item"><span class="spec-val">5.68k</span><span class="spec-label">小環線距離</span></div>
+                            <div class="spec-item"><span class="spec-val">2~2.5h</span><span class="spec-label">預估時間</span></div>
+                            <div class="spec-item"><span class="spec-val">310m</span><span class="spec-label">累計爬升</span></div>
+                            <div class="spec-item"><span class="spec-val">中度</span><span class="spec-label">難度等級</span></div>
+                        </div>
+
+                        <ul class="hike-details">
+                            <li>延伸方案一，經過 Sant Miquel 聖彌額爾小堂，並切入山林間的 Stations of the Cross (苦路/十字架道路)。</li>
+                            <li>適合當日抵達後精神極佳、天氣涼爽、且黑面聖母參拜排隊順暢時的升級挑戰。</li>
+                            <li>時間安排需較緊湊（約 14:15–16:45），需注意防曬與補水，避免影響晚禱。</li>
+                        </ul>
+
+                        <div class="hike-insight">
+                            <h5>靈性焦點</h5>
+                            <p>「把苦路帶進大山中，用身體走過。大山中的苦路提醒你：人生的路上跌倒並非失敗。天主不是只在山頂終點等我，祂也走在我的每一步山路中，陪我一同喘氣、一同停留、一同站起。」</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── 第五章：山中靜室 ─── -->
+        <section id="shrine" class="shrine-section">
+            <div class="shrine-bg-overlay"></div>
+            <div class="container">
+                <div class="chapter-header">
+                    <div class="chapter-tag">心靈交託</div>
+                    <h2 class="chapter-title">山中靜室</h2>
+                    <p class="chapter-subtitle">用石頭記下你的交託：在黑面聖母前安靜放下</p>
+                    <div class="chapter-rule"></div>
+                </div>
+
+                <div class="shrine-inner">
+                    <div class="shrine-instruction-text">
+                        <p>「聖母媽媽，我來了。我把我的疲憊、思念與不確定，都帶到妳和天主面前。」</p>
+                        <p>大山接住所有沉重。寫下你心中最想交給天主的焦慮或牽掛，並在黑面聖母前的祭台放下的一顆「靜心之石」。</p>
+                    </div>
+
+                    <div class="shrine-input-area">
+                        <textarea id="prayer-input" placeholder="寫下你的託付與祈禱…（例如：我將自己對未來的恐慌、對家人健康的過度牽掛，以及飛行焦慮，都交託在您的寶座前。請賜我如大山般的穩定力...）" maxlength="150"></textarea>
+                        <div class="shrine-btn-wrap">
+                            <button id="light-candle-btn" class="btn-primary">放下靜心之石，交託心靈</button>
+                        </div>
+                    </div>
+
+                    <!-- 靜心文字漂浮區 -->
+                    <div id="prayer-float-container" class="prayer-float-container"></div>
+
+                    <!-- 靜心石祭台 -->
+                    <div class="shrine-altar">
+                        <div class="altar-arch">
+                            <div class="altar-title">La Moreneta 祭台前</div>
+                            <div id="candles-grid" class="stones-grid">
+                                <!-- 動態生成的石頭會被插入到這裡 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ─── Footer 結尾祈禱文 ─── -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-cross">†</div>
+            <h3 class="footer-prayer-title">朝聖結尾祈禱文</h3>
+            <p class="footer-prayer-text">
+                主，在 Montserrat，我把自己帶上山，也帶到祢面前。<br>
+                願我在鋸齒山前看見自己的微小，在黑面聖母前學會重新站穩，<br>
+                在修道院規律的鐘聲中整理內心的自由，在山路上用每一步作身體的祈禱。<br>
+                求祢用世界打開我，用秩序保護我，用信仰接住我。<br>
+                我願意讓世界與祢，重新整理我。<br>
+                <span class="footer-amen">阿們。Amen.</span>
+            </p>
+            <div class="footer-divider"></div>
+            <div class="footer-links">
+                <a href="index.html">← 返回朝聖主頁</a>
+                <span>·</span>
+                <span>蒙塞拉特 Montserrat · 西班牙 · 2026年7月</span>
+            </div>
+            <p class="footer-copy">© 2026 朝聖與生命整理之旅 · Pilgrimage to Lourdes & Montserrat</p>
+        </div>
+    </footer>
+
+    <script>
+    // ═══════════════════════════════════════════
+    // 1. 導航列滾動高亮
+    // ═══════════════════════════════════════════
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => {
+            if (window.scrollY >= sec.offsetTop - 180) {
+                current = sec.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+
+        // 導航列滾動後加深背景
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 80) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // ═══════════════════════════════════════════
+    // 2. 金色大山粒子效果
+    // ═══════════════════════════════════════════
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+        constructor() { this.reset(); this.y = Math.random() * canvas.height; }
+        reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = canvas.height + Math.random() * 50;
+            this.size = Math.random() * 3.2 + 0.4;
+            this.speedY = Math.random() * 0.45 + 0.12;
+            this.amplitude = Math.random() * 1.0 + 0.25;
+            this.frequency = Math.random() * 0.015 + 0.004;
+            this.angle = Math.random() * Math.PI * 2;
+            const opacity = Math.random() * 0.3 + 0.06;
+            // 使用暖土金/磚橘色混合粒子
+            if (Math.random() > 0.4) {
+                this.color = `rgba(223, 177, 91, ${opacity})`; // 金色
+            } else {
+                this.color = `rgba(231, 136, 86, ${opacity})`; // 陶土紅
+            }
+        }
+        update() {
+            this.y -= this.speedY;
+            this.angle += this.frequency;
+            this.x += Math.sin(this.angle) * 0.2;
+            if (this.y < -10) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = 'rgba(223, 177, 91, 0.4)';
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+    }
+
+    const particles = Array.from({ length: 50 }, () => new Particle());
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ═══════════════════════════════════════════
+    // 3. Web Audio API 鐘聲與大山低吟合成器
+    // ═══════════════════════════════════════════
+    let audioCtx = null;
+    let isAmbientPlaying = false;
+    let droneOscs = [];
+    let droneGain = null;
+    let bellTimer = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    }
+
+    function playBellSound() {
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        const fund = 87.3; // F2 大鐘，比露德的 G2 更沉穩、更有大山厚重感
+        const partials = [
+            { f: 0.5, amp: 1.0, d: 15 }, { f: 1.0, amp: 0.8, d: 10 },
+            { f: 1.2, amp: 0.65, d: 8 },  { f: 1.5, amp: 0.45, d: 6.5 },
+            { f: 2.0, amp: 0.35, d: 5 }, { f: 2.5, amp: 0.2, d: 3.5 },
+            { f: 3.0, amp: 0.1, d: 2.5 }, { f: 4.0, amp: 0.05, d: 1.5 }
+        ];
+        const masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(0, now);
+        masterGain.gain.linearRampToValueAtTime(0.28, now + 0.01);
+        masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 15);
+        masterGain.connect(audioCtx.destination);
+
+        partials.forEach(p => {
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(fund * p.f, now);
+            gainNode.gain.setValueAtTime(p.amp, now);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, now + p.d);
+            osc.connect(gainNode);
+            gainNode.connect(masterGain);
+            osc.start(now);
+            osc.stop(now + p.d + 1);
+        });
+    }
+
+    function startAmbientDrone() {
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+        droneGain = audioCtx.createGain();
+        droneGain.gain.setValueAtTime(0, now);
+        droneGain.gain.linearRampToValueAtTime(0.022, now + 3.0); // 緩慢漸入
+        droneGain.connect(audioCtx.destination);
+        
+        // 根音 F2 (87.3Hz), 泛音 F3 (174.6Hz), C3 五度音 (130.8Hz)
+        [87.3, 87.6, 130.8, 174.6].forEach(f => {
+            const osc = audioCtx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(f, now);
+            const lfo = audioCtx.createOscillator();
+            lfo.frequency.setValueAtTime(0.07 + Math.random() * 0.04, now);
+            const lfoGain = audioCtx.createGain();
+            lfoGain.gain.setValueAtTime(0.005, now);
+            lfo.connect(lfoGain);
+            lfoGain.connect(osc.frequency);
+            osc.connect(droneGain);
+            osc.start(now); lfo.start(now);
+            droneOscs.push(osc, lfo);
+        });
+    }
+
+    function stopAmbientDrone() {
+        if (droneGain) {
+            const now = audioCtx.currentTime;
+            droneGain.gain.cancelScheduledValues(now);
+            droneGain.gain.setValueAtTime(droneGain.gain.value, now);
+            droneGain.gain.linearRampToValueAtTime(0, now + 1.8);
+            setTimeout(() => {
+                droneOscs.forEach(n => { try { n.stop(); } catch(e){} });
+                droneOscs = [];
+            }, 2200);
+        }
+    }
+
+    document.getElementById('ambient-btn').addEventListener('click', () => {
+        initAudio();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        if (!isAmbientPlaying) {
+            isAmbientPlaying = true;
+            document.getElementById('ambient-btn').classList.add('playing');
+            document.getElementById('ambient-btn').querySelector('.btn-text').innerText = '暫停靜心';
+            startAmbientDrone();
+            playBellSound();
+            const scheduleNextBell = () => {
+                const next = (20 + Math.random() * 8) * 1000;
+                bellTimer = setTimeout(() => { if (isAmbientPlaying) { playBellSound(); scheduleNextBell(); } }, next);
+            };
+            scheduleNextBell();
+        } else {
+            isAmbientPlaying = false;
+            document.getElementById('ambient-btn').classList.remove('playing');
+            document.getElementById('ambient-btn').querySelector('.btn-text').innerText = '靜心聆聽';
+            stopAmbientDrone();
+            clearTimeout(bellTimer);
+        }
+    });
+
+    document.getElementById('bell-btn').addEventListener('click', () => {
+        initAudio();
+        playBellSound();
+        const btn = document.getElementById('bell-btn');
+        btn.classList.add('ringing');
+        setTimeout(() => btn.classList.remove('ringing'), 600);
+    });
+
+    // ═══════════════════════════════════════════
+    // 4. 虛擬交託靜心石系統
+    // ═══════════════════════════════════════════
+    const prayerInput = document.getElementById('prayer-input');
+    const lightCandleBtn = document.getElementById('light-candle-btn');
+    const candlesGrid = document.getElementById('candles-grid');
+    const prayerFloatContainer = document.getElementById('prayer-float-container');
+
+    let prayers = JSON.parse(localStorage.getItem('montserrat_prayers')) || [
+        { id: 1, text: '我將飛行焦慮與恐慌症交託在大山中，求聖母陪我重新站穩。' },
+        { id: 2, text: '把對家人的過度承擔放下，相信天主也在他們生命中工作。' },
+        { id: 3, text: '我不需要在今天就變得完美，尚未完成的生命也是天主的傑作。' },
+        { id: 4, text: '用踏實的腳步在大山中呼吸，讓我的心慢慢安靜。' },
+    ];
+
+    function renderStones() {
+        candlesGrid.innerHTML = '';
+        prayers.forEach(p => createStoneDOM(p));
+    }
+
+    function createStoneDOM(prayerObj) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'stone-wrapper';
+        wrapper.title = prayerObj.text;
+        
+        wrapper.addEventListener('click', (e) => {
+            showFloatingText(prayerObj.text, e.clientX, e.clientY - 20);
+            initAudio();
+            // 輕敲高頻石頭共振水晶音
+            if (audioCtx) {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const g = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(523.25, now); // C5 水晶聲
+                g.gain.setValueAtTime(0, now);
+                g.gain.linearRampToValueAtTime(0.04, now + 0.008);
+                g.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
+                osc.connect(g);
+                g.connect(audioCtx.destination);
+                osc.start(now);
+                osc.stop(now + 2.2);
+            }
+        });
+
+        const glow = document.createElement('div');
+        glow.className = 'stone-glow';
+        const body = document.createElement('div');
+        body.className = 'stone-body';
+        
+        // 隨機微調石頭的傾角與形狀，使其看起來更像自然的卵石
+        const randomRot = Math.random() * 40 - 20;
+        const randomScaleX = 0.95 + Math.random() * 0.1;
+        const randomScaleY = 0.95 + Math.random() * 0.1;
+        body.style.transform = `rotate(${randomRot}deg) scale(${randomScaleX}, ${randomScaleY})`;
+
+        wrapper.appendChild(glow);
+        wrapper.appendChild(body);
+        candlesGrid.appendChild(wrapper);
+    }
+
+    function showFloatingText(text, x, y) {
+        const floatText = document.createElement('div');
+        floatText.className = 'floating-prayer-text';
+        floatText.innerText = text;
+        const rect = prayerFloatContainer.getBoundingClientRect();
+        if (x && y) {
+            floatText.style.left = `${x - rect.left}px`;
+            floatText.style.top = `${y - rect.top}px`;
+        } else {
+            floatText.style.left = `${Math.random() * 50 + 25}%`;
+            floatText.style.top = '60%';
+        }
+        prayerFloatContainer.appendChild(floatText);
+        setTimeout(() => floatText.remove(), 6000);
+    }
+
+    lightCandleBtn.addEventListener('click', () => {
+        const text = prayerInput.value.trim();
+        if (!text) { alert('請寫下您的交託或祈願，再放下靜心之石。'); return; }
+        initAudio();
+        playBellSound();
+        const newPrayer = { id: Date.now(), text };
+        prayers.push(newPrayer);
+        localStorage.setItem('montserrat_prayers', JSON.stringify(prayers));
+        createStoneDOM(newPrayer);
+        const btnRect = lightCandleBtn.getBoundingClientRect();
+        showFloatingText(text, btnRect.left + btnRect.width / 2, btnRect.top - 20);
+        prayerInput.value = '';
+        setTimeout(() => {
+            document.querySelector('.shrine-altar').scrollIntoView({ behavior: 'smooth' });
+        }, 1000);
+    });
+
+    renderStones();
+
+    // ═══════════════════════════════════════════
+    // 5. 滾動入場動畫
+    // ═══════════════════════════════════════════
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(
+        '.story-layout, .m-feature-card, .timeline-h-item, .map-layout, .hike-card, .shrine-input-area, .shrine-altar, .stat-card'
+    ).forEach(el => {
+        el.classList.add('animate-on-scroll');
+        observer.observe(el);
+    });
+
+    </script>
+</body>
+</html>
