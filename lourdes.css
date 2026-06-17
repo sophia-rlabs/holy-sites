@@ -1274,7 +1274,6 @@ body {
     .nav-links { display: none; }
     .navbar { padding: 1rem 1.5rem; }
     .hero-location-tag { display: none; }
-    .map-layout { grid-template-columns: 1fr; }
     .memorial-prayers { grid-template-columns: 1fr; }
 }
 
@@ -1302,24 +1301,38 @@ body {
     background: linear-gradient(to bottom, var(--bg-mid), var(--bg-dark));
 }
 
-.map-layout {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    margin-top: 0;
+.map-full-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 3rem;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .map-img-wrap {
     position: relative;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
     overflow: hidden;
-    border: 1px solid var(--glass-border);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+    border-left: none;
+    border-right: none;
     box-shadow:
-        0 0 0 1px rgba(223,177,91,0.06),
         0 20px 60px rgba(0,0,0,0.6),
         0 0 80px var(--gold-glow);
 }
+
+@media (min-width: 1200px) {
+    .map-full-container {
+        max-width: 1400px;
+        padding: 0 2rem;
+    }
+    .map-img-wrap {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--glass-border);
+    }
+}
+
 .pilgrimage-map {
     width: 100%;
     display: block;
@@ -1340,9 +1353,20 @@ body {
 }
 
 .map-desc {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+@media (max-width: 992px) {
+    .map-desc {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .map-desc {
+        grid-template-columns: 1fr;
+    }
 }
 
 .map-point {
@@ -1373,11 +1397,22 @@ body {
 .procession-dot { background: #f4d35e; color: #f4d35e; }
 
 .map-timetable {
+    grid-column: span 3;
     margin-top: 0.5rem;
     background: rgba(223,177,91,0.06);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
     padding: 1.2rem;
+}
+@media (max-width: 992px) {
+    .map-timetable {
+        grid-column: span 2;
+    }
+}
+@media (max-width: 600px) {
+    .map-timetable {
+        grid-column: span 1;
+    }
 }
 .timetable-title {
     font-family: var(--font-title);
